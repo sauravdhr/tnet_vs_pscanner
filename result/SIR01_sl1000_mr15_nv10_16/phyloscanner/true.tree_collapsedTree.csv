@@ -1,0 +1,11 @@
+unique.split,parent.split,host,parent.host
+314-SPLIT1,unassigned_region-SPLIT1,314,unassigned_region
+380,unassigned_region-SPLIT1,380,unassigned_region
+314-SPLIT2,unassigned_region-SPLIT1,314,unassigned_region
+316,314-SPLIT2,316,314
+68,316,68,316
+509,68,509,68
+864,316,864,316
+244,864,244,864
+489,316,489,316
+unassigned_region-SPLIT1,root,unassigned_region,root

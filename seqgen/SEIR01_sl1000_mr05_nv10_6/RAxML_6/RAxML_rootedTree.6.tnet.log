@@ -1,0 +1,125 @@
+Root ID: outbreak344
+Root Score Vector: 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 41 42 42 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 43 
+outbreak 383: 16.5285
+outbreak 784: 13.2431
+outbreak 124: 10.5685
+outbreak 9: 10.4323
+outbreak 898: 10.3194
+outbreak 235: 9.42638
+outbreak 73: 8.25311
+outbreak 134: 8.00072
+outbreak 193: 7.81852
+outbreak 350: 7.56718
+outbreak 762: 7.51734
+outbreak 676: 7.37942
+outbreak 890: 7.35114
+outbreak 591: 6.86475
+outbreak 105: 6.84908
+outbreak 311: 5.91171
+outbreak 372: 5.64471
+outbreak 344: 4.85965
+outbreak 223: 4.67799
+outbreak 251: 4.40069
+outbreak 142: 4.37208
+outbreak 218: 4.21287
+outbreak 159: 3.86079
+outbreak 584: 3.48173
+outbreak 332: 3.40703
+outbreak 248: 2.51316
+outbreak 189: 1.91367
+outbreak 620: 1.91074
+outbreak 606: 1.6789
+outbreak 579: 1.18041
+outbreak 318: 1.17056
+outbreak 111: 0.872805
+outbreak 725: 0.731495
+outbreak 545: 0.710162
+outbreak 15: 0.6273
+outbreak 205: 0.594976
+outbreak 50: 0.513459
+outbreak 191: 0.501837
+outbreak 646: 0.483287
+outbreak 517: 0.322841
+outbreak 734: 0.257663
+#Assignments: 26730
+
+Changes: 
+outbreak73 -> outbreak248
+outbreak73 -> outbreak189 
+outbreak142 -> outbreak73 
+outbreak142 -> outbreak676
+outbreak235 -> outbreak311
+outbreak142 -> outbreak235
+outbreak142 -> outbreak890 outbreak218
+outbreak620 -> outbreak142
+outbreak344 -> outbreak620
+outbreak350 -> outbreak606 outbreak318
+outbreak111 -> outbreak517
+outbreak350 -> outbreak111 outbreak50
+outbreak350 -> outbreak191 
+outbreak545 -> outbreak350 
+outbreak584 -> outbreak545
+outbreak584 -> outbreak159
+outbreak584 -> outbreak762 
+outbreak251 -> outbreak584 
+outbreak251 -> outbreak898
+outbreak251 -> outbreak193 
+outbreak251 -> outbreak725
+outbreak344 -> outbreak251
+outbreak223 -> outbreak591 
+outbreak383 -> outbreak579 outbreak105
+outbreak372 -> outbreak15
+outbreak372 -> outbreak205 outbreak646
+outbreak383 -> outbreak372
+outbreak383 -> outbreak332 
+outbreak223 -> outbreak734 outbreak383
+outbreak344 -> outbreak134 
+outbreak344 -> outbreak223 
+outbreak344 -> outbreak223
+outbreak344 -> outbreak784 outbreak9
+outbreak344 -> outbreak124 
+
+outbreak344 source: 0.205882 recieved: 0 total: 0.205882
+outbreak620 source: 0.0294118 recieved: 0.0294118 total: 0.0588235
+outbreak73 source: 0.0588235 recieved: 0.0294118 total: 0.0882353
+outbreak248 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak189 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak142 source: 0.117647 recieved: 0.0294118 total: 0.147059
+outbreak676 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak235 source: 0.0294118 recieved: 0.0294118 total: 0.0588235
+outbreak311 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak890 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak218 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak251 source: 0.117647 recieved: 0.0294118 total: 0.147059
+outbreak584 source: 0.0882353 recieved: 0.0294118 total: 0.117647
+outbreak350 source: 0.0882353 recieved: 0.0294118 total: 0.117647
+outbreak606 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak318 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak191 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak111 source: 0.0294118 recieved: 0.0294118 total: 0.0588235
+outbreak517 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak50 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak545 source: 0.0294118 recieved: 0.0294118 total: 0.0588235
+outbreak159 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak762 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak898 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak193 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak725 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak223 source: 0.0588235 recieved: 0.0588235 total: 0.117647
+outbreak591 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak734 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak383 source: 0.0882353 recieved: 0.0294118 total: 0.117647
+outbreak579 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak105 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak332 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak372 source: 0.0588235 recieved: 0.0294118 total: 0.0882353
+outbreak15 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak205 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak646 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak134 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak784 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak9 source: 0 recieved: 0.0294118 total: 0.0294118
+outbreak124 source: 0 recieved: 0.0294118 total: 0.0294118
+
+Newick Format Tree: 
+(((((outbreak344,outbreak344)outbreak344,(((outbreak620,outbreak620)outbreak620,((outbreak620,outbreak620)outbreak620,((((((outbreak73,outbreak73)outbreak73,(outbreak73,((outbreak248,(outbreak248,outbreak248)outbreak248)outbreak248,(((outbreak248,outbreak248)outbreak248,(outbreak248,(outbreak248,outbreak248)outbreak248)outbreak248)outbreak248,(outbreak248,outbreak248)outbreak248)outbreak248)outbreak248)outbreak73)outbreak73,((outbreak73,(outbreak73,outbreak73)outbreak73)outbreak73,outbreak73)outbreak73)outbreak73,(outbreak73,((((outbreak189,(((outbreak189,outbreak189)outbreak189,(outbreak189,outbreak189)outbreak189)outbreak189,(outbreak189,outbreak189)outbreak189)outbreak189)outbreak189,(outbreak189,(outbreak189,outbreak189)outbreak189)outbreak189)outbreak189,outbreak73)outbreak73,outbreak73)outbreak73)outbreak73)outbreak73,(outbreak142,outbreak142)outbreak142)outbreak142,(((outbreak142,((outbreak676,outbreak676)outbreak676,((outbreak676,(outbreak676,outbreak676)outbreak676)outbreak676,(outbreak676,((outbreak676,outbreak676)outbreak676,(outbreak676,outbreak676)outbreak676)outbreak676)outbreak676)outbreak676)outbreak676)outbreak142,(outbreak142,(outbreak142,outbreak142)outbreak142)outbreak142)outbreak142,(((outbreak142,outbreak142)outbreak142,(outbreak142,(outbreak142,((((outbreak235,outbreak235)outbreak235,(outbreak235,outbreak235)outbreak235)outbreak235,((outbreak235,outbreak235)outbreak235,(outbreak235,(outbreak235,outbreak235)outbreak235)outbreak235)outbreak235)outbreak235,(outbreak235,(outbreak311,(((outbreak311,((outbreak311,outbreak311)outbreak311,outbreak311)outbreak311)outbreak311,outbreak311)outbreak311,(outbreak311,(outbreak311,(outbreak311,outbreak311)outbreak311)outbreak311)outbreak311)outbreak311)outbreak311)outbreak235)outbreak235)outbreak142)outbreak142)outbreak142,(((outbreak890,(outbreak890,(outbreak890,outbreak890)outbreak890)outbreak890)outbreak890,((((outbreak890,outbreak890)outbreak890,outbreak890)outbreak890,outbreak890)outbreak890,(outbreak890,outbreak890)outbreak890)outbreak890)outbreak890,((outbreak218,(outbreak218,((outbreak218,outbreak218)outbreak218,outbreak218)outbreak218)outbreak218)outbreak218,((((outbreak218,outbreak218)outbreak218,outbreak218)outbreak218,outbreak218)outbreak218,outbreak218)outbreak218)outbreak218)outbreak142)outbreak142)outbreak142)outbreak142)outbreak620)outbreak620,((outbreak620,outbreak620)outbreak620,(outbreak620,((outbreak620,outbreak620)outbreak620,outbreak620)outbreak620)outbreak620)outbreak620)outbreak620)outbreak344,outbreak344)outbreak344,(outbreak251,((((((outbreak584,(outbreak584,((outbreak584,outbreak584)outbreak584,outbreak584)outbreak584)outbreak584)outbreak584,(((outbreak584,(outbreak584,(((((outbreak350,outbreak350)outbreak350,((outbreak350,(outbreak350,(outbreak350,outbreak350)outbreak350)outbreak350)outbreak350,((((outbreak606,outbreak606)outbreak606,((((outbreak606,outbreak606)outbreak606,(outbreak606,(outbreak606,outbreak606)outbreak606)outbreak606)outbreak606,outbreak606)outbreak606,(outbreak606,outbreak606)outbreak606)outbreak606)outbreak606,((outbreak318,(outbreak318,outbreak318)outbreak318)outbreak318,((outbreak318,((outbreak318,outbreak318)outbreak318,outbreak318)outbreak318)outbreak318,(outbreak318,(outbreak318,outbreak318)outbreak318)outbreak318)outbreak318)outbreak318)outbreak350,(((outbreak191,outbreak191)outbreak191,((outbreak191,(outbreak191,(outbreak191,outbreak191)outbreak191)outbreak191)outbreak191,(((outbreak191,outbreak191)outbreak191,outbreak191)outbreak191,outbreak191)outbreak191)outbreak191)outbreak191,(((((outbreak111,(outbreak111,outbreak111)outbreak111)outbreak111,(outbreak111,((outbreak517,(outbreak517,outbreak517)outbreak517)outbreak517,(((outbreak517,outbreak517)outbreak517,(outbreak517,outbreak517)outbreak517)outbreak517,((outbreak517,outbreak517)outbreak517,outbreak517)outbreak517)outbreak517)outbreak517)outbreak111)outbreak111,((outbreak111,outbreak111)outbreak111,outbreak111)outbreak111)outbreak111,(outbreak111,(outbreak111,outbreak111)outbreak111)outbreak111)outbreak111,((outbreak50,(((outbreak50,outbreak50)outbreak50,(outbreak50,outbreak50)outbreak50)outbreak50,(outbreak50,((outbreak50,outbreak50)outbreak50,outbreak50)outbreak50)outbreak50)outbreak50)outbreak50,outbreak50)outbreak50)outbreak350)outbreak350)outbreak350)outbreak350)outbreak350,(outbreak350,(outbreak350,(outbreak350,outbreak350)outbreak350)outbreak350)outbreak350)outbreak350,outbreak545)outbreak545,((outbreak545,(outbreak545,((outbreak545,outbreak545)outbreak545,(outbreak545,(outbreak545,outbreak545)outbreak545)outbreak545)outbreak545)outbreak545)outbreak545,(outbreak545,outbreak545)outbreak545)outbreak545)outbreak545)outbreak584)outbreak584,(outbreak584,(((outbreak159,(outbreak159,outbreak159)outbreak159)outbreak159,outbreak159)outbreak159,((outbreak159,(outbreak159,outbreak159)outbreak159)outbreak159,(outbreak159,(outbreak159,outbreak159)outbreak159)outbreak159)outbreak159)outbreak159)outbreak584)outbreak584,((outbreak762,((outbreak762,((outbreak762,outbreak762)outbreak762,outbreak762)outbreak762)outbreak762,((outbreak762,((outbreak762,outbreak762)outbreak762,outbreak762)outbreak762)outbreak762,outbreak762)outbreak762)outbreak762)outbreak762,outbreak584)outbreak584)outbreak584)outbreak584,outbreak584)outbreak584,outbreak251)outbreak251,((outbreak251,((outbreak251,(((outbreak898,outbreak898)outbreak898,(outbreak898,(outbreak898,outbreak898)outbreak898)outbreak898)outbreak898,(((outbreak898,outbreak898)outbreak898,outbreak898)outbreak898,(outbreak898,outbreak898)outbreak898)outbreak898)outbreak898)outbreak251,(((outbreak193,(outbreak193,((outbreak193,outbreak193)outbreak193,outbreak193)outbreak193)outbreak193)outbreak193,(((outbreak193,(outbreak193,outbreak193)outbreak193)outbreak193,outbreak193)outbreak193,outbreak193)outbreak193)outbreak193,outbreak251)outbreak251)outbreak251)outbreak251,(outbreak251,outbreak251)outbreak251)outbreak251)outbreak251,((outbreak251,outbreak251)outbreak251,(outbreak251,((outbreak725,(outbreak725,outbreak725)outbreak725)outbreak725,(outbreak725,(((outbreak725,outbreak725)outbreak725,(outbreak725,outbreak725)outbreak725)outbreak725,(outbreak725,outbreak725)outbreak725)outbreak725)outbreak725)outbreak725)outbreak251)outbreak251)outbreak251)outbreak251)outbreak344,((((((outbreak223,(((outbreak591,((outbreak591,outbreak591)outbreak591,((outbreak591,outbreak591)outbreak591,(outbreak591,((outbreak591,outbreak591)outbreak591,outbreak591)outbreak591)outbreak591)outbreak591)outbreak591)outbreak591,outbreak591)outbreak591,outbreak223)outbreak223)outbreak223,(outbreak223,outbreak223)outbreak223)outbreak223,(((((outbreak734,(outbreak734,(outbreak734,outbreak734)outbreak734)outbreak734)outbreak734,((outbreak734,outbreak734)outbreak734,((outbreak734,(outbreak734,outbreak734)outbreak734)outbreak734,outbreak734)outbreak734)outbreak734)outbreak734,((outbreak383,outbreak383)outbreak383,(((outbreak383,(outbreak383,outbreak383)outbreak383)outbreak383,((outbreak383,outbreak383)outbreak383,((outbreak579,(((outbreak579,(outbreak579,outbreak579)outbreak579)outbreak579,((outbreak579,outbreak579)outbreak579,(outbreak579,outbreak579)outbreak579)outbreak579)outbreak579,(outbreak579,outbreak579)outbreak579)outbreak579)outbreak579,(((outbreak105,outbreak105)outbreak105,(outbreak105,(outbreak105,((outbreak105,outbreak105)outbreak105,(outbreak105,outbreak105)outbreak105)outbreak105)outbreak105)outbreak105)outbreak105,(outbreak105,outbreak105)outbreak105)outbreak105)outbreak383)outbreak383)outbreak383,((outbreak332,((outbreak332,(outbreak332,(outbreak332,outbreak332)outbreak332)outbreak332)outbreak332,(outbreak332,((outbreak332,outbreak332)outbreak332,(outbreak332,outbreak332)outbreak332)outbreak332)outbreak332)outbreak332)outbreak332,(outbreak383,(outbreak383,(outbreak383,((outbreak372,(outbreak372,(((outbreak15,outbreak15)outbreak15,outbreak15)outbreak15,((outbreak15,outbreak15)outbreak15,(outbreak15,(outbreak15,(outbreak15,(outbreak15,outbreak15)outbreak15)outbreak15)outbreak15)outbreak15)outbreak15)outbreak15)outbreak372)outbreak372,(((outbreak372,(outbreak372,(outbreak372,(outbreak372,outbreak372)outbreak372)outbreak372)outbreak372)outbreak372,((outbreak205,(outbreak205,((outbreak205,(((outbreak205,outbreak205)outbreak205,((outbreak205,outbreak205)outbreak205,outbreak205)outbreak205)outbreak205,outbreak205)outbreak205)outbreak205,outbreak205)outbreak205)outbreak205)outbreak205,((outbreak646,(outbreak646,(outbreak646,outbreak646)outbreak646)outbreak646)outbreak646,(outbreak646,((outbreak646,outbreak646)outbreak646,((outbreak646,outbreak646)outbreak646,outbreak646)outbreak646)outbreak646)outbreak646)outbreak646)outbreak372)outbreak372,(outbreak372,(outbreak372,outbreak372)outbreak372)outbreak372)outbreak372)outbreak372)outbreak383)outbreak383)outbreak383)outbreak383)outbreak383)outbreak383)outbreak223,(outbreak223,((outbreak223,outbreak223)outbreak223,outbreak223)outbreak223)outbreak223)outbreak223,outbreak223)outbreak223)outbreak223,(outbreak344,(((outbreak134,((outbreak134,outbreak134)outbreak134,(outbreak134,outbreak134)outbreak134)outbreak134)outbreak134,((outbreak134,outbreak134)outbreak134,(outbreak134,(outbreak134,outbreak134)outbreak134)outbreak134)outbreak134)outbreak134,outbreak344)outbreak344)outbreak344)outbreak344,outbreak223)outbreak344,(outbreak344,(((outbreak344,outbreak344)outbreak344,outbreak344)outbreak344,((((((outbreak784,(outbreak784,outbreak784)outbreak784)outbreak784,outbreak784)outbreak784,(outbreak784,(outbreak784,outbreak784)outbreak784)outbreak784)outbreak784,((outbreak784,outbreak784)outbreak784,outbreak784)outbreak784)outbreak784,(((outbreak9,(((outbreak9,outbreak9)outbreak9,outbreak9)outbreak9,outbreak9)outbreak9)outbreak9,(outbreak9,(outbreak9,outbreak9)outbreak9)outbreak9)outbreak9,(outbreak9,outbreak9)outbreak9)outbreak9)outbreak344,(((outbreak124,(outbreak124,outbreak124)outbreak124)outbreak124,((outbreak124,outbreak124)outbreak124,(outbreak124,((outbreak124,outbreak124)outbreak124,(outbreak124,outbreak124)outbreak124)outbreak124)outbreak124)outbreak124)outbreak124,outbreak344)outbreak344)outbreak344)outbreak344)outbreak344)outbreak344)outbreak344;

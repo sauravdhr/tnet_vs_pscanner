@@ -1,0 +1,12 @@
+unique.split,parent.split,host,parent.host
+355-SPLIT1,unassigned_region-SPLIT1,355,unassigned_region
+71,unassigned_region-SPLIT1,71,unassigned_region
+553,71,553,71
+208,553,208,553
+528,208,528,208
+905,528,905,528
+246,553,246,553
+448,553,448,553
+572,448,572,448
+355-SPLIT2,unassigned_region-SPLIT1,355,unassigned_region
+unassigned_region-SPLIT1,root,unassigned_region,root

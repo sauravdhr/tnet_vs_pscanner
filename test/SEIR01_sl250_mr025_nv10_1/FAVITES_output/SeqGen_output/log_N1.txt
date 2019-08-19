@@ -1,0 +1,29 @@
+Sequence Generator - seq-gen
+Version 1.3.4
+(c) Copyright, 1996-2017 Andrew Rambaut and Nick Grassly
+Institute of Evolutionary Biology, University of Edinburgh
+
+Originally developed at:
+Department of Zoology, University of Oxford
+
+Random number generator seed: -8687880941568795321
+
+Simulations of 460 taxa, 264 nucleotides
+  for 1 tree(s) with 1 dataset(s) per tree
+
+Alignment read: numSequences = 1, numAlignmentSites = 264
+Using sequence 1 as the ancestral sequence
+
+Branch lengths assumed to be number of substitutions per site
+
+Continuous gamma rate heterogeneity:
+    shape = 0.100000
+Model = GTR: General time reversible (nucleotides)
+  Rate of transitions and transversions equal:
+  rate matrix = gamma1: 6.4619 alpha1:16.3997  beta1: 3.1970
+                                beta2: 0.7505 alpha2:14.6298
+                                              gamma2:  1.0000
+  with nucleotide frequencies specified as:
+  A=0.178159 C=0.263322 G=0.233821 T=0.324698
+
+Time taken: 0.021413 seconds

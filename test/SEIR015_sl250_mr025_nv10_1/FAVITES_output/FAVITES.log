@@ -1,0 +1,48 @@
+/---------------------------------------------------------------------\
+| FAVITES - FrAmework for VIral Transmission and Evolution Simulation |
+|                           Version 1.1.22                            |
+|                         Niema Moshiri 2017                          |
+\---------------------------------------------------------------------/
+
+========================   Simulation Process  ========================
+Loading contact network... done
+Creating ContactNetwork object... done
+Selecting seed nodes... done
+Infecting seed nodes... done
+Performing transmission simulations... done
+Finalizing transmission simulations... done
+Writing true transmission network to file... done
+True transmission network was written to: /home/samsledje/testing_pipeline/results/SEIR015_sl250_mr025_nv10_1/FAVITES_output/error_free_files/transmission_network.txt
+Sampling patients in time... done
+Evolving trees and sequences to end time... done
+Pruning sampled trees... done
+Writing true phylogenetic trees (time) to files... done
+True phylogenetic trees (time) were written to: /home/samsledje/testing_pipeline/results/SEIR015_sl250_mr025_nv10_1/FAVITES_output/error_free_files/phylogenetic_trees/
+Converting trees from time to mutation rate... done
+Writing true phylogenetic trees (expected number of mutations) to files... done
+True phylogenetic trees (expected number of mutations) were written to: /home/samsledje/testing_pipeline/results/SEIR015_sl250_mr025_nv10_1/FAVITES_output/error_free_files/phylogenetic_trees/
+Merging true phylogenetic trees with true seed tree (if applicable)... done
+Finalizing sequence simulations... done
+Writing final sequence data to file...
+True sequence data were written to: /home/samsledje/testing_pipeline/results/SEIR015_sl250_mr025_nv10_1/FAVITES_output/error_free_files
+
+
+=======================   Real Data Artifacts   =======================
+Subsampling contact network nodes... done
+Simulating sequencing error... done
+Error prone sequence data were written to: /home/samsledje/testing_pipeline/results/SEIR015_sl250_mr025_nv10_1/FAVITES_output/error_prone_files
+
+
+===========================   Information   ===========================
+Output Size (bytes): 1783276
+Execution Time (seconds): 10
+
+
+============================   Citations   ============================
+Hagberg A.A., Schult D.A., Swart P.J. (2008). "Exploring network structure, dynamics, and function using NetworkX". Proceedings of the 7th Python in Science Conference (SciPy2008), 11-15.
+Jones E., Oliphant E., Peterson P., et al. (2001). "SciPy: Open Source Scientific Tools for Python" (http://scipy.org/).
+Moshiri N. (2018). "TreeSwift: a massively scalable Python package for trees". bioRxiv:325522.
+Moshiri N., Ragonnet-Cronin M., Wertheim J.O., Mirarab S. (2018). "FAVITES: simultaneous simulation of transmission networks, phylogenetic trees, and sequences". bioRxiv:297267.
+Rambaut A., Grassly N. C. (1997). "Seq-Gen: An application for the Monte Carlo simulation of DNA sequence evolution along phylogenetic trees". Comput. Appl. Biosci. 13, 235-238.
+Ratmann O., Hodcroft E.B., Pickles M., Cori A., Hall M., Lycett S., Colijn C., Dearlove B., Didelot X., Frost S., Hossain A.S.M.M., Joy J.B., Kendall M., Kuhnert D., Leventhal G.E., Liang R., Plazzotta G., Poon A.F.Y, Rasmussen D.A., Stadler T., Volz E., Weis C., Brown A.J.L., Fraser C. (2016). "Phylogenetic Tools for Generalized HIV-1 Epidemics: Findings from the PANGEA-HIV Methods Comparison". Mol. Biol. Evol. 34(1), 185-203.
+Sahneh F.D., Vajdi A., Shakeri H., Fan F., Scoglio C. (2016). "GEMFsim: A Stochastic Simulator for the Generalized Epidemic Modeling Framework". arXiv preprint arXiv:1528946.

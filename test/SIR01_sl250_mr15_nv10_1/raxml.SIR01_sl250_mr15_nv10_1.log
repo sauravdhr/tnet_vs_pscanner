@@ -1,0 +1,387 @@
+Warning, you specified a working directory via "-w"
+Keep in mind that RAxML only accepts absolute path names, not relative ones!
+
+RAxML can't, parse the alignment file as phylip file 
+it will now try to parse it as FASTA file
+
+
+
+IMPORTANT WARNING: Sequences 228_N103 and 228_N104 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 551_N164 and 551_N165 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 37_N196 and 37_N197 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 795_N209 and 795_N210 are exactly identical
+
+IMPORTANT WARNING
+Found 4 sequences that are exactly identical to other sequences in the alignment.
+Normally they should be excluded from the analysis.
+
+Just in case you might need it, an alignment file with 
+sequence duplicates removed is printed to file clean_data/SIR01_sl250_mr15_nv10_1.fasta.reduced
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.11 released by Alexandros Stamatakis on June 2017.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 145 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 0.00%
+
+RAxML rapid bootstrapping and subsequent ML search
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+
+Executing 25 rapid bootstrap inferences and thereafter a thorough ML search 
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 145
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC -f a -x 12345 -p 12345 -s clean_data/SIR01_sl250_mr15_nv10_1.fasta -n SIR01_sl250_mr15_nv10_1 -w /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/ -m GTRGAMMA -N 25 
+
+
+
+Time for BS model parameter optimization 3.899186
+Bootstrap[0]: Time 16.078862 seconds, bootstrap likelihood -17562.503440, best rearrangement setting 13
+Bootstrap[1]: Time 10.568114 seconds, bootstrap likelihood -18125.646338, best rearrangement setting 13
+Bootstrap[2]: Time 10.406058 seconds, bootstrap likelihood -15939.818971, best rearrangement setting 12
+Bootstrap[3]: Time 9.793855 seconds, bootstrap likelihood -16667.352345, best rearrangement setting 15
+Bootstrap[4]: Time 8.900262 seconds, bootstrap likelihood -15684.269136, best rearrangement setting 10
+Bootstrap[5]: Time 8.826669 seconds, bootstrap likelihood -15124.263622, best rearrangement setting 10
+Bootstrap[6]: Time 8.344080 seconds, bootstrap likelihood -16194.241231, best rearrangement setting 6
+Bootstrap[7]: Time 9.458918 seconds, bootstrap likelihood -19043.582734, best rearrangement setting 14
+Bootstrap[8]: Time 7.526380 seconds, bootstrap likelihood -16366.170364, best rearrangement setting 5
+Bootstrap[9]: Time 8.728954 seconds, bootstrap likelihood -15383.656196, best rearrangement setting 7
+Bootstrap[10]: Time 10.506592 seconds, bootstrap likelihood -19166.390498, best rearrangement setting 7
+Bootstrap[11]: Time 8.288125 seconds, bootstrap likelihood -15740.426669, best rearrangement setting 5
+Bootstrap[12]: Time 10.261393 seconds, bootstrap likelihood -16800.034049, best rearrangement setting 8
+Bootstrap[13]: Time 8.535800 seconds, bootstrap likelihood -15840.083572, best rearrangement setting 7
+Bootstrap[14]: Time 8.798384 seconds, bootstrap likelihood -18359.923197, best rearrangement setting 12
+Bootstrap[15]: Time 8.959738 seconds, bootstrap likelihood -15253.588204, best rearrangement setting 15
+Bootstrap[16]: Time 10.257078 seconds, bootstrap likelihood -17853.456676, best rearrangement setting 12
+Bootstrap[17]: Time 9.844041 seconds, bootstrap likelihood -18604.622846, best rearrangement setting 12
+Bootstrap[18]: Time 7.902564 seconds, bootstrap likelihood -18855.120448, best rearrangement setting 5
+Bootstrap[19]: Time 9.198017 seconds, bootstrap likelihood -18336.666735, best rearrangement setting 8
+Bootstrap[20]: Time 9.073588 seconds, bootstrap likelihood -16748.715024, best rearrangement setting 10
+Bootstrap[21]: Time 9.212082 seconds, bootstrap likelihood -18220.949937, best rearrangement setting 6
+Bootstrap[22]: Time 8.263144 seconds, bootstrap likelihood -16654.105643, best rearrangement setting 5
+Bootstrap[23]: Time 8.519280 seconds, bootstrap likelihood -17509.173274, best rearrangement setting 7
+Bootstrap[24]: Time 8.529355 seconds, bootstrap likelihood -17095.148587, best rearrangement setting 8
+
+
+Overall Time for 25 Rapid Bootstraps 237.955262 seconds
+Average Time per Rapid Bootstrap 9.518210 seconds
+
+Starting ML Search ...
+
+Fast ML optimization finished
+
+Fast ML search Time: 383.792649 seconds
+
+Slow ML Search 0 Likelihood: -17744.718045
+Slow ML Search 1 Likelihood: -17749.553203
+Slow ML Search 2 Likelihood: -17746.517629
+Slow ML Search 3 Likelihood: -17751.816186
+Slow ML Search 4 Likelihood: -17754.863943
+Slow ML optimization finished
+
+Slow ML search Time: 459.864923 seconds
+Thorough ML search Time: 59.082258 seconds
+
+Final ML Optimization Likelihood: -17744.849963
+
+Model Information:
+
+Model Parameters of Partition 0, Name: No Name Provided, Type of Data: DNA
+alpha: 0.260030
+Tree-Length: 148.495839
+rate A <-> C: 5.226603
+rate A <-> G: 9.745916
+rate A <-> T: 4.092903
+rate C <-> G: 0.727956
+rate C <-> T: 12.972133
+rate G <-> T: 1.000000
+
+freq pi(A): 0.182786
+freq pi(C): 0.248253
+freq pi(G): 0.326536
+freq pi(T): 0.242424
+
+
+ML search took 904.195047 secs or 0.251165 hours
+
+Combined Bootstrap and ML search took 1142.449791 secs or 0.317347 hours
+
+Drawing Bootstrap Support Values on best-scoring ML tree ...
+
+
+
+Found 1 tree in File /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_bestTree.SIR01_sl250_mr15_nv10_1
+
+
+
+Found 1 tree in File /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_bestTree.SIR01_sl250_mr15_nv10_1
+
+Program execution info written to /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_info.SIR01_sl250_mr15_nv10_1
+All 25 bootstrapped trees written to: /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_bootstrap.SIR01_sl250_mr15_nv10_1
+
+Best-scoring ML tree written to: /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_bestTree.SIR01_sl250_mr15_nv10_1
+
+Best-scoring ML tree with support values written to: /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_bipartitions.SIR01_sl250_mr15_nv10_1
+
+Best-scoring ML tree with support values as branch labels written to: /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_bipartitionsBranchLabels.SIR01_sl250_mr15_nv10_1
+
+Overall execution time for full ML analysis: 1142.601353 secs or 0.317389 hours or 0.013225 days
+
+Found a total of 180 taxa in first tree of tree collection 
+Expecting all remaining trees in collection to have the same taxon set
+add [174_N38]
+add [174_N37]
+add [636_N61]
+add [636_N63]
+add [636_N62]
+add [636_N60]
+add [636_N48]
+add [636_N47]
+add [636_N46]
+add [636_N45]
+add [636_N49]
+add [350_N53]
+add [350_N52]
+add [350_N51]
+add [350_N50]
+add [350_N56]
+add [350_N55]
+add [350_N57]
+add [350_N59]
+add [350_N58]
+add [350_N54]
+add [636_N44]
+add [177_N70]
+add [177_N68]
+add [177_N69]
+add [177_N71]
+add [177_N72]
+add [177_N66]
+add [177_N67]
+add [177_N65]
+add [177_N64]
+add [177_N73]
+add [854_N76]
+add [854_N74]
+add [854_N75]
+add [854_N112]
+add [854_N77]
+add [854_N79]
+add [854_N78]
+add [854_N111]
+add [854_N110]
+add [355_N90]
+add [355_N91]
+add [355_N86]
+add [355_N83]
+add [355_N84]
+add [355_N85]
+add [355_N82]
+add [355_N88]
+add [355_N89]
+add [355_N87]
+add [59_N81]
+add [59_N80]
+add [59_N109]
+add [228_N104]
+add [228_N103]
+add [228_N101]
+add [228_N99]
+add [228_N98]
+add [228_N97]
+add [228_N95]
+add [228_N96]
+add [228_N100]
+add [228_N102]
+add [59_N105]
+add [59_N106]
+add [59_N94]
+add [59_N93]
+add [59_N92]
+add [59_N108]
+add [59_N107]
+add [854_N113]
+add [174_N42]
+add [174_N43]
+add [107_N127]
+add [107_N126]
+add [107_N125]
+add [107_N130]
+add [107_N128]
+add [107_N129]
+add [107_N131]
+add [107_N134]
+add [107_N132]
+add [107_N133]
+add [174_N135]
+add [334_N116]
+add [334_N118]
+add [334_N117]
+add [334_N115]
+add [334_N124]
+add [334_N123]
+add [334_N122]
+add [334_N121]
+add [334_N120]
+add [334_N119]
+add [174_N114]
+add [46_N147]
+add [46_N153]
+add [46_N152]
+add [46_N151]
+add [46_N144]
+add [46_N148]
+add [46_N149]
+add [46_N145]
+add [46_N146]
+add [46_N150]
+add [453_N139]
+add [453_N140]
+add [62_N156]
+add [62_N158]
+add [62_N159]
+add [62_N157]
+add [174_N39]
+add [174_N41]
+add [174_N40]
+add [453_N137]
+add [453_N138]
+add [453_N136]
+add [453_N142]
+add [453_N141]
+add [453_N143]
+add [211_N191]
+add [211_N192]
+add [211_N193]
+add [211_N189]
+add [211_N190]
+add [211_N195]
+add [211_N194]
+add [37_N204]
+add [37_N205]
+add [37_N203]
+add [37_N202]
+add [37_N201]
+add [211_N188]
+add [211_N187]
+add [211_N186]
+add [37_N199]
+add [37_N200]
+add [37_N198]
+add [37_N197]
+add [37_N196]
+add [551_N172]
+add [551_N171]
+add [551_N168]
+add [551_N170]
+add [551_N169]
+add [551_N167]
+add [551_N166]
+add [551_N163]
+add [551_N164]
+add [551_N165]
+add [62_N173]
+add [62_N184]
+add [367_N176]
+add [367_N177]
+add [367_N179]
+add [367_N178]
+add [367_N182]
+add [367_N181]
+add [367_N180]
+add [367_N183]
+add [367_N174]
+add [367_N175]
+add [62_N185]
+add [62_N160]
+add [62_N162]
+add [62_N161]
+add [795_N214]
+add [795_N215]
+add [795_N213]
+add [795_N212]
+add [795_N211]
+add [795_N210]
+add [795_N209]
+add [795_N208]
+add [795_N206]
+add [795_N207]
+add [453_N154]
+add [453_N155]
+add [174_N36]
+
+
+WARNING: RAxML is not checking sequences for duplicate seqs and sites with missing data!
+
+
+
+This is RAxML version 8.2.11 released by Alexandros Stamatakis on June 2017.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+RAxML tree rooting algorithm
+
+
+RAxML was called as follows:
+
+raxmlHPC -f I -m GTRGAMMA -t /home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_bestTree.SIR01_sl250_mr15_nv10_1 -n SIR01_sl250_mr15_nv10_1.rooted 
+
+
+RAxML-rooted tree using subtree length-balance printed to file:
+/home/CAM/ssledzieski/testing_pipeline/results/SIR01_sl250_mr15_nv10_1/RAxML_output/RAxML_rootedTree.SIR01_sl250_mr15_nv10_1.rooted
+
+
+Time for tree rooting: 0.145701
+

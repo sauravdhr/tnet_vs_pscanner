@@ -1,0 +1,54 @@
+[compartment number]	[4]
+[layer number]		[2]
+[STATUS_BEGIN]		[0]
+[DIRECTED]		[1]
+[OUT_FILE]		[output.txt]
+[MAX_TIME]		[10]
+[MAX_EVENTS]		[2147483647]
+[SIM_ROUNDS]		[1]
+[INTERVAL_NUM]		[1]
+[RANDOM_SEED]		[1537285804]
+[SHOW_INDUCER]		[1]
+[INDUCER_LIST]
+  1  2
+[NODAL_TRAN_MATRIX]
+0	0	0	0	
+0	0	0	0.09	
+0	0	0	0	
+0	0	0	0	
+[EDGED_TRAN_MATRIX]
+0	0.01	0	0	
+0	0	0	0	
+0	0	0	0	
+0	0	0	0	
+
+0	0	0	0	
+0	0	0	0	
+0	0	0	0	
+0	0	0	0	
+
+missing section [NETWORK_INFO]
+Analysis network info automaticly
+layer 0 edges		[ 19,800 ]
+layer 1 edges		[ 19,800 ]
+1000 nodes start from 1
+2 layers
+19800 edges in layer 0
+19800 edges in layer 1
+[node range]		[ 1 - 1,000 ]
+[STATUS_FILE]		[status.txt]
+[initial population]	[ 999  1  0  0 ]
+Reading network...
+[0.00 s ]	layer[1] [ 19,800/19,800 ] edges get
+[0.00 s ]	layer[2] [ 19,800/19,800 ] edges get
+initial time cost[ 0.00 s ]
+preprocess time cost[ 0.00 s]
+elapse time[0.00 s], [2]events generated
+elapse time[0.00 s], [4]events generated
+T [10.0428] 	reach limit [    10], stop at [24] events.	stop simulation round [1/1]
+last moment population[  981 13 0 6 ]
+events number[ 24 ]
+preprocess time cost[ 0.00 s]
+simulation time cost[ 0.00 s]
+
+simulation success!

@@ -1,0 +1,44 @@
+[NODAL_TRAN_MATRIX]
+0	0.0	0	0
+0	0	0.06	0
+0	0	0	0.93
+0	0	0	0
+
+[EDGED_TRAN_MATRIX]
+0	0.01	0	0
+0	0	0	0
+0	0	0	0
+0	0	0	0
+
+[STATUS_BEGIN]
+0
+
+[INDUCER_LIST]
+2
+
+[SIM_ROUNDS]
+1
+
+[INTERVAL_NUM]
+1
+
+[MAX_TIME]
+50.0
+
+[MAX_EVENTS]
+2147483647
+
+[DIRECTED]
+1
+
+[SHOW_INDUCER]
+1
+
+[DATA_FILE]
+network.txt
+
+[STATUS_FILE]
+status.txt
+
+[OUT_FILE]
+output.txt

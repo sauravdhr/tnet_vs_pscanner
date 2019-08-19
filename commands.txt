@@ -1,0 +1,2 @@
+raxml rooting:
+raxmlHPC -f I -m GTRGAMMA -t RAxML_bestTree.SEIR01_sl250_mr025_nv10_1 -n tnet.rooted
