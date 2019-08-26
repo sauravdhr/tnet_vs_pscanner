@@ -1,0 +1,11 @@
+unique.split,parent.split,host,parent.host
+202-SPLIT1,unassigned_region-SPLIT1,202,unassigned_region
+141,455,141,455
+455,202-SPLIT1,455,202
+292,202-SPLIT2,292,202
+202-SPLIT2,unassigned_region-SPLIT1,202,unassigned_region
+443,202-SPLIT2,443,202
+882-SPLIT2,443,882,443
+183,882-SPLIT2,183,882
+882-SPLIT1,183,882,183
+unassigned_region-SPLIT1,root,unassigned_region,root

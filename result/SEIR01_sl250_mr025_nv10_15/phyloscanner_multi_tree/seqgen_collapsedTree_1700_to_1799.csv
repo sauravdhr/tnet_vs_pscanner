@@ -1,0 +1,16 @@
+unique.split,parent.split,host,parent.host
+776-SPLIT1,532,776,532
+532,unassigned_region-SPLIT1,532,unassigned_region
+715,532,715,532
+927-SPLIT1,532,927,532
+507,532,507,532
+776-SPLIT2,532,776,532
+621,unassigned_region-SPLIT1,621,unassigned_region
+989,621,989,621
+776-SPLIT3,989,776,989
+776-SPLIT4,474,776,474
+776-SPLIT5,474,776,474
+474,unassigned_region-SPLIT2,474,unassigned_region
+927-SPLIT2,unassigned_region-SPLIT2,927,unassigned_region
+unassigned_region-SPLIT1,root,unassigned_region,root
+unassigned_region-SPLIT2,621,unassigned_region,621

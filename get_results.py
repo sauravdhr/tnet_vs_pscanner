@@ -1,4 +1,4 @@
-import os
+import shutil, os
 import operator
 
 def tnet_multiple(input_file, output_file, time):
@@ -46,6 +46,46 @@ def tnet_multiple(input_file, output_file, time):
 
 	result.close()
 
+def phyloscanner_multi_tree(folder):
+	phylo_trees_dir = 'seqgen/'+folder+'/phylo_trees'
+	result_dir = 'result/'+folder+'/phyloscanner_multi_tree'
+	if os.path.exists(result_dir): return True
+	if not os.path.exists(phylo_trees_dir): return False
+
+	os.mkdir(result_dir)
+	input_file = phylo_trees_dir + '/RAxML_rootedTree.InWindow_'
+	cmd = 'PhyloScanner/phyloscanner_analyse_trees.R {} seqgen -ct -od {} s,0 --overwrite --tipRegex="^(.*)_(.*)$"'.format(input_file, result_dir)
+	os.system(cmd)
+	# print(cmd)
+
+	files = os.listdir(result_dir)
+	for file in files:
+		if 'processedTree' in file:
+			# print(file)
+			os.remove(os.path.join(result_dir,file))
+
+	return True
+
+def all_rooted_trees_exist(folder):
+	for i in range(10):
+		rooted_tree = 'seqgen/'+folder+'/RAxML_'+ str(i)+'/RAxML_rootedTree.' + str(i)
+		if not os.path.exists(rooted_tree):
+			return False
+		
+	return True
+
+def create_phylo_multi_tree_input(folder):
+	phylo_trees_dir = 'seqgen/'+folder+'/phylo_trees'
+	if os.path.exists(phylo_trees_dir): return True
+	if not all_rooted_trees_exist(folder): return False
+	
+	os.mkdir(phylo_trees_dir)
+	for i in range(10):
+		rooted_tree = 'seqgen/'+folder+'/RAxML_'+ str(i)+'/RAxML_rootedTree.' + str(i)
+		rename_tree = phylo_trees_dir + '/RAxML_rootedTree.InWindow_'+ str(1000+i*100) +'_to_'+ str(1099+i*100) +'.tree'
+		shutil.copy(rooted_tree, rename_tree)
+
+	return True
 
 def generate_outputs(data_dir, folders):
 	# Generating outputs
@@ -121,6 +161,20 @@ def get_phyloscanner_edges(phylo_file):
 		parts = line.rstrip().split(',')
 		if parts[2].isdigit() and parts[3].isdigit():
 			phyloscanner_edges.append(parts[3]+'->'+parts[2])
+		# print(parts)
+
+	f.close()
+	return phyloscanner_edges
+
+def get_phyloscanner_multi_tree_edges(phylo_file):
+	phyloscanner_edges = []
+	f = open(phylo_file)
+	f.readline()
+	for line in f.readlines():
+		parts = line.rstrip().split(',')
+		# print(parts)
+		if parts[2] == 'trans':
+			phyloscanner_edges.append(parts[0]+'->'+parts[1])
 		# print(parts)
 
 	f.close()
@@ -320,7 +374,7 @@ def main():
 	root_dir = '/home/saurav/research/Favites_data_from_sam/'
 
 	print('Please choose one of the following datasets->')
-	print(next(os.walk(root_dir))[1])
+	# print(next(os.walk(root_dir))[1])
 
 	dataset = 'SEIR01'
 	print('You choose->',dataset)
@@ -329,25 +383,30 @@ def main():
 	folders = next(os.walk(data_dir))[1]
 	# print('There are total {} data points in this dataset'.format(len(folders)))
 
-	# generate_outputs(data_dir, folders)
-	# tnet_RAxML_bootstrap(data_dir, folders)
-	# compare_outputs(folders)
-	# generate_TP_FP_FN()
-	# generate_f1_score('truetree')
+	for folder in folders:
+		# print(folder, create_phylo_multi_tree_input(folder))
+		print(folder, phyloscanner_multi_tree(folder))
 
-	real = set(get_real_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/real_network.txt'))
-	tnet_mul = set(get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/raxml.tree.tnet.multiple',80))
-	tnet_boot = set(get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/bootstrap.tnet.multiple',80))
+		# generate_outputs(data_dir, folders)
+		# tnet_RAxML_bootstrap(data_dir, folders)
+		# compare_outputs(folders)
+		# generate_TP_FP_FN()
+		# generate_f1_score('truetree')
+		# break
 
-	TP = real & tnet_mul
-	FP = tnet_mul - real
-	FN = real - tnet_mul
-	print('80_TNet TP',len(TP),'FP',len(FP),'FN',len(FN))
+	# real = set(get_real_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/real_network.txt'))
+	# tnet_mul = set(get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/raxml.tree.tnet.multiple',80))
+	# tnet_boot = set(get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/bootstrap.tnet.multiple',80))
 
-	TP = real & tnet_boot
-	FP = tnet_boot - real
-	FN = real - tnet_boot
-	print('80_TNet_boot TP',len(TP),'FP',len(FP),'FN',len(FN))
+	# TP = real & tnet_mul
+	# FP = tnet_mul - real
+	# FN = real - tnet_mul
+	# print('80_TNet TP',len(TP),'FP',len(FP),'FN',len(FN))
+
+	# TP = real & tnet_boot
+	# FP = tnet_boot - real
+	# FN = real - tnet_boot
+	# print('80_TNet_boot TP',len(TP),'FP',len(FP),'FN',len(FN))
 
 
 

@@ -1,0 +1,13 @@
+unique.split,parent.split,host,parent.host
+385-SPLIT1,unassigned_region-SPLIT1,385,unassigned_region
+357,unassigned_region-SPLIT1,357,unassigned_region
+385-SPLIT2,357,385,357
+330,unassigned_region-SPLIT1,330,unassigned_region
+796-SPLIT2,330,796,330
+98,unassigned_region-SPLIT2,98,unassigned_region
+796-SPLIT1,98,796,98
+785-SPLIT1,98,785,98
+785-SPLIT2,unassigned_region-SPLIT2,785,unassigned_region
+483,330,483,330
+unassigned_region-SPLIT1,root,unassigned_region,root
+unassigned_region-SPLIT2,796-SPLIT2,unassigned_region,796

@@ -1,0 +1,11 @@
+unique.split,parent.split,host,parent.host
+411,unassigned_region-SPLIT1,411,unassigned_region
+786-SPLIT1,411,786,411
+88,786-SPLIT1,88,786
+786-SPLIT2,unassigned_region-SPLIT1,786,unassigned_region
+772,292,772,292
+292,unassigned_region-SPLIT1,292,unassigned_region
+222,292,222,292
+90,292,90,292
+50,90,50,90
+unassigned_region-SPLIT1,root,unassigned_region,root
