@@ -126,7 +126,7 @@ def root_raxml_best_trees(n):
 				if os.path.exists(best_tree):
 					cmd = 'raxmlHPC -f I -m GTRGAMMA -t {} -n {} -w {}'.format(best_tree, i, output_dir)
 					print(cmd)
-					os.system(cmd)
+					# os.system(cmd)
 					try:
 						os.remove(output_dir + '/RAxML_info.' + str(i))
 					except:
