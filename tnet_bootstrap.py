@@ -118,6 +118,7 @@ def root_raxml_best_trees(n):
 			output_dir = cur_dir + folder + '/RAxML_' + str(i)
 			best_tree = output_dir + '/RAxML_bestTree.' + str(i)
 			rooted_tree = output_dir + '/RAxML_rootedTree.' + str(i)
+			info = output_dir + '/RAxML_info.' + str(i)
 
 			if os.path.exists(rooted_tree):
 				print('Already rooted')
@@ -126,7 +127,10 @@ def root_raxml_best_trees(n):
 					cmd = 'raxmlHPC -f I -m GTRGAMMA -t {} -n {} -w {}'.format(best_tree, i, output_dir)
 					print(cmd)
 					os.system(cmd)
-					os.remove(output_dir + '/RAxML_info.' + str(i))
+					try:
+						os.remove(output_dir + '/RAxML_info.' + str(i))
+					except:
+						print('cool')
 				else:
 					print('Best tree does not exist')
 
@@ -136,21 +140,24 @@ def create_bash_scripts(num):
 	folders = next(os.walk('seqgen/'))[1]
 	for folder in folders:
 		for i in range(num):
-			if folder.startswith('SEIR01_'): continue
-			input_file = 'seqgen/' +folder+ '/seqgen.seqs.' + str(i)
-			output_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/seqgen/' +folder+ '/RAxML_' + str(i)
+			best_tree = 'seqgen/'+folder+'/RAxML_'+ str(i)+'/RAxML_bestTree.' + str(i)
+			info = 'seqgen/'+folder+'/RAxML_'+ str(i)+'/RAxML_info.' + str(i)
+			if os.path.exists(best_tree): continue
+			if os.path.exists(info):
+				input_file = 'seqgen/' +folder+ '/seqgen.seqs.' + str(i)
+				output_dir = '/data/saurav/seqgen/' +folder+ '/RAxML_' + str(i)
 
-			cmd = 'raxmlHPC -f a -x 12345 -p 12345 -s {} -n {} -w {} -m GTRGAMMA -N 25'.format(input_file, i, output_dir)
-			print(cmd)
-			cmd_list.append(cmd)
+				cmd = 'raxmlHPC -f a -x 12345 -p 12345 -s {} -n {} -w {} -m GTRGAMMA -N 25'.format(input_file, i, output_dir)
+				print(cmd)
+				cmd_list.append(cmd)
 
 	print(len(cmd_list))
 
-	for i in range(len(cmd_list)):
-		print(i%60, cmd_list[i])
-		script = open('raxml_scripts/' + str(i%60) + '.raxml_cmd.sh', 'a+')
-		script.write(cmd_list[i] + '\n')
-		script.close()
+	# for i in range(len(cmd_list)):
+	# 	print(i%60, cmd_list[i])
+	# 	script = open('raxml_scripts/' + str(i%60) + '.raxml_cmd.sh', 'a+')
+	# 	script.write(cmd_list[i] + '\n')
+	# 	script.close()
 
 def run_script(folder, script):
 	cmd = './'+folder+script
@@ -204,10 +211,10 @@ def main():
 	# 	print('DONE UPTO',i+len(points))
 
 
-	# root_raxml_best_trees(10)
+	root_raxml_best_trees(10)
 
 	# create_bash_scripts(10)
-	raxml_scripts_threaded('raxml_scripts/')
+	# raxml_scripts_threaded('raxml_scripts/')
 
 
 if __name__ == "__main__": main()
