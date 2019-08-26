@@ -1,0 +1,145 @@
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 456 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 0.00%
+
+RAxML rapid bootstrapping and subsequent ML search
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+
+Executing 25 rapid bootstrap inferences and thereafter a thorough ML search 
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 456
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC -f a -x 12345 -p 12345 -s seqgen/SIR003_sl1000_mr05_nv5_3/seqgen.seqs.4 -n 4 -w /data/saurav/seqgen/SIR003_sl1000_mr05_nv5_3/RAxML_4 -m GTRGAMMA -N 25 
+
+
+
+Time for BS model parameter optimization 3.052706
+Bootstrap[0]: Time 10.356131 seconds, bootstrap likelihood -17020.189567, best rearrangement setting 13
+Bootstrap[1]: Time 5.641474 seconds, bootstrap likelihood -18299.665389, best rearrangement setting 13
+Bootstrap[2]: Time 2.553074 seconds, bootstrap likelihood -18101.401436, best rearrangement setting 12
+Bootstrap[3]: Time 4.956822 seconds, bootstrap likelihood -17908.018631, best rearrangement setting 15
+Bootstrap[4]: Time 6.446168 seconds, bootstrap likelihood -18689.253824, best rearrangement setting 10
+Bootstrap[5]: Time 6.541213 seconds, bootstrap likelihood -19053.468618, best rearrangement setting 10
+Bootstrap[6]: Time 5.631767 seconds, bootstrap likelihood -18534.114456, best rearrangement setting 6
+Bootstrap[7]: Time 6.344442 seconds, bootstrap likelihood -19183.173686, best rearrangement setting 14
+Bootstrap[8]: Time 5.716209 seconds, bootstrap likelihood -18348.612570, best rearrangement setting 5
+Bootstrap[9]: Time 6.690593 seconds, bootstrap likelihood -19856.026098, best rearrangement setting 7
+Bootstrap[10]: Time 6.973946 seconds, bootstrap likelihood -19341.233622, best rearrangement setting 7
+Bootstrap[11]: Time 6.269288 seconds, bootstrap likelihood -17993.352644, best rearrangement setting 5
+Bootstrap[12]: Time 5.618322 seconds, bootstrap likelihood -18764.553653, best rearrangement setting 8
+Bootstrap[13]: Time 5.958923 seconds, bootstrap likelihood -18890.793470, best rearrangement setting 7
+Bootstrap[14]: Time 4.816777 seconds, bootstrap likelihood -18374.824391, best rearrangement setting 12
+Bootstrap[15]: Time 3.581872 seconds, bootstrap likelihood -18494.691099, best rearrangement setting 15
+Bootstrap[16]: Time 3.585495 seconds, bootstrap likelihood -18514.152082, best rearrangement setting 12
+Bootstrap[17]: Time 3.607656 seconds, bootstrap likelihood -17944.142545, best rearrangement setting 12
+Bootstrap[18]: Time 3.984170 seconds, bootstrap likelihood -18484.007495, best rearrangement setting 5
+Bootstrap[19]: Time 3.319775 seconds, bootstrap likelihood -17875.190704, best rearrangement setting 8
+Bootstrap[20]: Time 3.593194 seconds, bootstrap likelihood -18888.174857, best rearrangement setting 10
+Bootstrap[21]: Time 3.619385 seconds, bootstrap likelihood -18759.587596, best rearrangement setting 6
+Bootstrap[22]: Time 3.790360 seconds, bootstrap likelihood -18952.823232, best rearrangement setting 5
+Bootstrap[23]: Time 3.441408 seconds, bootstrap likelihood -17553.641646, best rearrangement setting 7
+Bootstrap[24]: Time 3.497317 seconds, bootstrap likelihood -17790.890391, best rearrangement setting 8
+
+
+Overall Time for 25 Rapid Bootstraps 129.257423 seconds
+Average Time per Rapid Bootstrap 5.170297 seconds
+
+Starting ML Search ...
+
+Fast ML optimization finished
+
+Fast ML search Time: 99.699077 seconds
+
+Slow ML Search 0 Likelihood: -18518.774025
+Slow ML Search 1 Likelihood: -18518.774025
+Slow ML Search 2 Likelihood: -18518.774025
+Slow ML Search 3 Likelihood: -18518.774025
+Slow ML Search 4 Likelihood: -18518.774025
+Slow ML optimization finished
+
+Slow ML search Time: 113.440079 seconds
+Thorough ML search Time: 22.023642 seconds
+
+Final ML Optimization Likelihood: -18518.824742
+
+Model Information:
+
+Model Parameters of Partition 0, Name: No Name Provided, Type of Data: DNA
+alpha: 0.182928
+Tree-Length: 47.965591
+rate A <-> C: 4.937598
+rate A <-> G: 11.829462
+rate A <-> T: 2.995665
+rate C <-> G: 0.693611
+rate C <-> T: 10.317353
+rate G <-> T: 1.000000
+
+freq pi(A): 0.184175
+freq pi(C): 0.253830
+freq pi(G): 0.233018
+freq pi(T): 0.328977
+
+
+ML search took 235.201652 secs or 0.065334 hours
+
+Combined Bootstrap and ML search took 364.462924 secs or 0.101240 hours
+
+Drawing Bootstrap Support Values on best-scoring ML tree ...
+
+
+
+Found 1 tree in File /data/saurav/seqgen/SIR003_sl1000_mr05_nv5_3/RAxML_4/RAxML_bestTree.4
+
+
+
+Found 1 tree in File /data/saurav/seqgen/SIR003_sl1000_mr05_nv5_3/RAxML_4/RAxML_bestTree.4
+
+Program execution info written to /data/saurav/seqgen/SIR003_sl1000_mr05_nv5_3/RAxML_4/RAxML_info.4
+All 25 bootstrapped trees written to: /data/saurav/seqgen/SIR003_sl1000_mr05_nv5_3/RAxML_4/RAxML_bootstrap.4
+
+Best-scoring ML tree written to: /data/saurav/seqgen/SIR003_sl1000_mr05_nv5_3/RAxML_4/RAxML_bestTree.4
+
+Best-scoring ML tree with support values written to: /data/saurav/seqgen/SIR003_sl1000_mr05_nv5_3/RAxML_4/RAxML_bipartitions.4
+
+Best-scoring ML tree with support values as branch labels written to: /data/saurav/seqgen/SIR003_sl1000_mr05_nv5_3/RAxML_4/RAxML_bipartitionsBranchLabels.4
+
+Overall execution time for full ML analysis: 364.479030 secs or 0.101244 hours or 0.004219 days
+

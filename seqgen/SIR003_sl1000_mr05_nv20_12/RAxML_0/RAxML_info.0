@@ -1,0 +1,212 @@
+
+
+IMPORTANT WARNING: Sequences 901_N625 and 901_N626 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 996_N675 and 996_N676 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 996_N685 and 996_N686 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 639_N791 and 639_N792 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 163_N998 and 163_N999 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 776_N909 and 776_N910 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 634_N815 and 634_N816 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 634_N822 and 634_N823 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 634_N826 and 634_N827 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 634_N829 and 634_N830 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 747_N1046 and 747_N1047 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 459_N1069 and 459_N1070 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 459_N1069 and 459_N1071 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 459_N1069 and 459_N1072 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 459_N1075 and 459_N1077 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 459_N1080 and 459_N1081 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 459_N1083 and 459_N1084 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 908_N579 and 908_N580 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 251_N1151 and 251_N1152 are exactly identical
+
+
+IMPORTANT WARNING: Sequences 830_N225 and 830_N226 are exactly identical
+
+IMPORTANT WARNING
+Found 20 sequences that are exactly identical to other sequences in the alignment.
+Normally they should be excluded from the analysis.
+
+Just in case you might need it, an alignment file with 
+sequence duplicates removed is printed to file seqgen/SIR003_sl1000_mr05_nv20_12/seqgen.seqs.0.reduced
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 584 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 0.00%
+
+RAxML rapid bootstrapping and subsequent ML search
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+
+Executing 25 rapid bootstrap inferences and thereafter a thorough ML search 
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 584
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC -f a -x 12345 -p 12345 -s seqgen/SIR003_sl1000_mr05_nv20_12/seqgen.seqs.0 -n 0 -w /data/saurav/seqgen/SIR003_sl1000_mr05_nv20_12/RAxML_0 -m GTRGAMMA -N 25 
+
+
+
+Time for BS model parameter optimization 118.465591
+Bootstrap[0]: Time 1052.272413 seconds, bootstrap likelihood -230585.336141, best rearrangement setting 13
+Bootstrap[1]: Time 870.243124 seconds, bootstrap likelihood -241651.062561, best rearrangement setting 13
+Bootstrap[2]: Time 800.030702 seconds, bootstrap likelihood -229061.386265, best rearrangement setting 12
+Bootstrap[3]: Time 802.054680 seconds, bootstrap likelihood -222232.635681, best rearrangement setting 15
+Bootstrap[4]: Time 715.940596 seconds, bootstrap likelihood -242608.627284, best rearrangement setting 10
+Bootstrap[5]: Time 616.538405 seconds, bootstrap likelihood -239046.766866, best rearrangement setting 10
+Bootstrap[6]: Time 357.520488 seconds, bootstrap likelihood -230430.894654, best rearrangement setting 6
+Bootstrap[7]: Time 727.321102 seconds, bootstrap likelihood -253685.063980, best rearrangement setting 14
+Bootstrap[8]: Time 194.867159 seconds, bootstrap likelihood -233453.843162, best rearrangement setting 5
+Bootstrap[9]: Time 320.685321 seconds, bootstrap likelihood -243731.951304, best rearrangement setting 7
+Bootstrap[10]: Time 286.610449 seconds, bootstrap likelihood -225772.704780, best rearrangement setting 7
+Bootstrap[11]: Time 181.390271 seconds, bootstrap likelihood -208160.353551, best rearrangement setting 5
+Bootstrap[12]: Time 553.651534 seconds, bootstrap likelihood -241954.540814, best rearrangement setting 8
+Bootstrap[13]: Time 502.548325 seconds, bootstrap likelihood -224069.228474, best rearrangement setting 7
+Bootstrap[14]: Time 740.871117 seconds, bootstrap likelihood -229272.089744, best rearrangement setting 12
+Bootstrap[15]: Time 791.769501 seconds, bootstrap likelihood -228499.148805, best rearrangement setting 15
+Bootstrap[16]: Time 542.973982 seconds, bootstrap likelihood -232043.949098, best rearrangement setting 12
+Bootstrap[17]: Time 595.145353 seconds, bootstrap likelihood -240244.398661, best rearrangement setting 12
+Bootstrap[18]: Time 192.410903 seconds, bootstrap likelihood -232453.651487, best rearrangement setting 5
+Bootstrap[19]: Time 270.881772 seconds, bootstrap likelihood -217622.510876, best rearrangement setting 8
+Bootstrap[20]: Time 338.911173 seconds, bootstrap likelihood -237445.108463, best rearrangement setting 10
+Bootstrap[21]: Time 228.557579 seconds, bootstrap likelihood -232327.880845, best rearrangement setting 6
+Bootstrap[22]: Time 225.951396 seconds, bootstrap likelihood -234094.462723, best rearrangement setting 5
+Bootstrap[23]: Time 272.777800 seconds, bootstrap likelihood -211823.042075, best rearrangement setting 7
+Bootstrap[24]: Time 287.190194 seconds, bootstrap likelihood -230471.089507, best rearrangement setting 8
+
+
+Overall Time for 25 Rapid Bootstraps 12470.748853 seconds
+Average Time per Rapid Bootstrap 498.829954 seconds
+
+Starting ML Search ...
+
+Fast ML optimization finished
+
+Fast ML search Time: 4206.562918 seconds
+
+Slow ML Search 0 Likelihood: -232215.075749
+Slow ML Search 1 Likelihood: -232222.207976
+Slow ML Search 2 Likelihood: -232219.082863
+Slow ML Search 3 Likelihood: -232232.568445
+Slow ML Search 4 Likelihood: -232233.675224
+Slow ML optimization finished
+
+Slow ML search Time: 20320.680281 seconds
+Thorough ML search Time: 1894.715639 seconds
+
+Final ML Optimization Likelihood: -232215.037396
+
+Model Information:
+
+Model Parameters of Partition 0, Name: No Name Provided, Type of Data: DNA
+alpha: 0.276896
+Tree-Length: 574.410964
+rate A <-> C: 5.781218
+rate A <-> G: 14.161409
+rate A <-> T: 2.838036
+rate C <-> G: 0.707013
+rate C <-> T: 12.345149
+rate G <-> T: 1.000000
+
+freq pi(A): 0.169382
+freq pi(C): 0.261695
+freq pi(G): 0.233726
+freq pi(T): 0.335197
+
+
+ML search took 26422.026187 secs or 7.339452 hours
+
+Combined Bootstrap and ML search took 38892.780155 secs or 10.803550 hours
+
+Drawing Bootstrap Support Values on best-scoring ML tree ...
+
+
+
+Found 1 tree in File /data/saurav/seqgen/SIR003_sl1000_mr05_nv20_12/RAxML_0/RAxML_bestTree.0
+
+
+
+Found 1 tree in File /data/saurav/seqgen/SIR003_sl1000_mr05_nv20_12/RAxML_0/RAxML_bestTree.0
+
+Program execution info written to /data/saurav/seqgen/SIR003_sl1000_mr05_nv20_12/RAxML_0/RAxML_info.0
+All 25 bootstrapped trees written to: /data/saurav/seqgen/SIR003_sl1000_mr05_nv20_12/RAxML_0/RAxML_bootstrap.0
+
+Best-scoring ML tree written to: /data/saurav/seqgen/SIR003_sl1000_mr05_nv20_12/RAxML_0/RAxML_bestTree.0
+
+Best-scoring ML tree with support values written to: /data/saurav/seqgen/SIR003_sl1000_mr05_nv20_12/RAxML_0/RAxML_bipartitions.0
+
+Best-scoring ML tree with support values as branch labels written to: /data/saurav/seqgen/SIR003_sl1000_mr05_nv20_12/RAxML_0/RAxML_bipartitionsBranchLabels.0
+
+Overall execution time for full ML analysis: 38892.850645 secs or 10.803570 hours or 0.450149 days
+
