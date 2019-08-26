@@ -1,0 +1,145 @@
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 621 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 0.00%
+
+RAxML rapid bootstrapping and subsequent ML search
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+
+Executing 25 rapid bootstrap inferences and thereafter a thorough ML search 
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 621
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC -f a -x 12345 -p 12345 -s seqgen/SEIR015_sl1000_mr05_nv10_7/seqgen.seqs.2 -n 2 -w /data/saurav/seqgen/SEIR015_sl1000_mr05_nv10_7/RAxML_2 -m GTRGAMMA -N 25 
+
+
+
+Time for BS model parameter optimization 8.545704
+Bootstrap[0]: Time 70.664646 seconds, bootstrap likelihood -73135.973225, best rearrangement setting 13
+Bootstrap[1]: Time 41.614638 seconds, bootstrap likelihood -73551.090671, best rearrangement setting 13
+Bootstrap[2]: Time 43.696842 seconds, bootstrap likelihood -70822.712378, best rearrangement setting 12
+Bootstrap[3]: Time 44.884182 seconds, bootstrap likelihood -71389.047464, best rearrangement setting 15
+Bootstrap[4]: Time 38.672516 seconds, bootstrap likelihood -74022.425391, best rearrangement setting 10
+Bootstrap[5]: Time 32.544193 seconds, bootstrap likelihood -74092.613672, best rearrangement setting 10
+Bootstrap[6]: Time 32.272192 seconds, bootstrap likelihood -74601.725070, best rearrangement setting 6
+Bootstrap[7]: Time 51.715805 seconds, bootstrap likelihood -74436.153552, best rearrangement setting 14
+Bootstrap[8]: Time 33.366232 seconds, bootstrap likelihood -71108.687557, best rearrangement setting 5
+Bootstrap[9]: Time 37.423566 seconds, bootstrap likelihood -74679.305076, best rearrangement setting 7
+Bootstrap[10]: Time 60.224784 seconds, bootstrap likelihood -72024.979087, best rearrangement setting 7
+Bootstrap[11]: Time 51.019920 seconds, bootstrap likelihood -70308.792768, best rearrangement setting 5
+Bootstrap[12]: Time 66.993894 seconds, bootstrap likelihood -72482.289509, best rearrangement setting 8
+Bootstrap[13]: Time 62.295287 seconds, bootstrap likelihood -70836.469047, best rearrangement setting 7
+Bootstrap[14]: Time 102.220111 seconds, bootstrap likelihood -71295.099236, best rearrangement setting 12
+Bootstrap[15]: Time 111.099653 seconds, bootstrap likelihood -73255.066114, best rearrangement setting 15
+Bootstrap[16]: Time 90.146614 seconds, bootstrap likelihood -72302.342000, best rearrangement setting 12
+Bootstrap[17]: Time 81.649446 seconds, bootstrap likelihood -73247.710356, best rearrangement setting 12
+Bootstrap[18]: Time 47.959689 seconds, bootstrap likelihood -71849.700980, best rearrangement setting 5
+Bootstrap[19]: Time 65.852731 seconds, bootstrap likelihood -69862.044233, best rearrangement setting 8
+Bootstrap[20]: Time 84.232254 seconds, bootstrap likelihood -71945.955925, best rearrangement setting 10
+Bootstrap[21]: Time 58.963175 seconds, bootstrap likelihood -71706.576276, best rearrangement setting 6
+Bootstrap[22]: Time 54.420285 seconds, bootstrap likelihood -72455.108963, best rearrangement setting 5
+Bootstrap[23]: Time 61.225422 seconds, bootstrap likelihood -69457.138749, best rearrangement setting 7
+Bootstrap[24]: Time 69.105271 seconds, bootstrap likelihood -72201.879976, best rearrangement setting 8
+
+
+Overall Time for 25 Rapid Bootstraps 1494.445548 seconds
+Average Time per Rapid Bootstrap 59.777822 seconds
+
+Starting ML Search ...
+
+Fast ML optimization finished
+
+Fast ML search Time: 3414.697605 seconds
+
+Slow ML Search 0 Likelihood: -72960.016358
+Slow ML Search 1 Likelihood: -72965.409242
+Slow ML Search 2 Likelihood: -72970.481881
+Slow ML Search 3 Likelihood: -72971.033156
+Slow ML Search 4 Likelihood: -72980.819031
+Slow ML optimization finished
+
+Slow ML search Time: 2604.720119 seconds
+Thorough ML search Time: 342.085826 seconds
+
+Final ML Optimization Likelihood: -72960.084760
+
+Model Information:
+
+Model Parameters of Partition 0, Name: No Name Provided, Type of Data: DNA
+alpha: 0.224292
+Tree-Length: 346.496722
+rate A <-> C: 5.788468
+rate A <-> G: 14.949910
+rate A <-> T: 3.114803
+rate C <-> G: 0.952873
+rate C <-> T: 11.425218
+rate G <-> T: 1.000000
+
+freq pi(A): 0.170198
+freq pi(C): 0.259578
+freq pi(G): 0.240639
+freq pi(T): 0.329586
+
+
+ML search took 6361.559941 secs or 1.767100 hours
+
+Combined Bootstrap and ML search took 7856.011971 secs or 2.182226 hours
+
+Drawing Bootstrap Support Values on best-scoring ML tree ...
+
+
+
+Found 1 tree in File /data/saurav/seqgen/SEIR015_sl1000_mr05_nv10_7/RAxML_2/RAxML_bestTree.2
+
+
+
+Found 1 tree in File /data/saurav/seqgen/SEIR015_sl1000_mr05_nv10_7/RAxML_2/RAxML_bestTree.2
+
+Program execution info written to /data/saurav/seqgen/SEIR015_sl1000_mr05_nv10_7/RAxML_2/RAxML_info.2
+All 25 bootstrapped trees written to: /data/saurav/seqgen/SEIR015_sl1000_mr05_nv10_7/RAxML_2/RAxML_bootstrap.2
+
+Best-scoring ML tree written to: /data/saurav/seqgen/SEIR015_sl1000_mr05_nv10_7/RAxML_2/RAxML_bestTree.2
+
+Best-scoring ML tree with support values written to: /data/saurav/seqgen/SEIR015_sl1000_mr05_nv10_7/RAxML_2/RAxML_bipartitions.2
+
+Best-scoring ML tree with support values as branch labels written to: /data/saurav/seqgen/SEIR015_sl1000_mr05_nv10_7/RAxML_2/RAxML_bipartitionsBranchLabels.2
+
+Overall execution time for full ML analysis: 7856.044003 secs or 2.182234 hours or 0.090926 days
+
