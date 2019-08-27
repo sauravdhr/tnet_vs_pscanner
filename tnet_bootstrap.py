@@ -195,7 +195,9 @@ def check_and_clean_seqgen(num):
 			rooted_tree = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_rootedTree.' + str(i)
 
 			if os.path.exists(rooted_tree): rooted_count += 1
-			if os.path.exists(best_tree): best_count += 1
+			if os.path.exists(best_tree):
+				best_count += 1
+				# print(folder, i)
 			if os.path.exists(info_file):
 				info_count += 1
 				# os.remove(info_file)
