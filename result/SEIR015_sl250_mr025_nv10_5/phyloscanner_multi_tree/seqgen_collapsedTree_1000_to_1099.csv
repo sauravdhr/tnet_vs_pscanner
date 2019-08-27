@@ -1,0 +1,15 @@
+unique.split,parent.split,host,parent.host
+198,unassigned_region-SPLIT1,198,unassigned_region
+431-SPLIT1,198,431,198
+137-SPLIT1,unassigned_region-SPLIT1,137,unassigned_region
+299,unassigned_region-SPLIT1,299,unassigned_region
+100,299,100,299
+431-SPLIT2,299,431,299
+137-SPLIT2,299,137,299
+357,unassigned_region-SPLIT1,357,unassigned_region
+148,357,148,357
+335,148,335,148
+137-SPLIT3,357,137,357
+292,357,292,357
+137-SPLIT4,unassigned_region-SPLIT1,137,unassigned_region
+unassigned_region-SPLIT1,root,unassigned_region,root

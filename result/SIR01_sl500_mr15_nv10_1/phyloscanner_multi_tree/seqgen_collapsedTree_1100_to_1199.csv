@@ -1,0 +1,9 @@
+unique.split,parent.split,host,parent.host
+993-SPLIT1,701,993,701
+701,unassigned_region-SPLIT1,701,unassigned_region
+993-SPLIT2,701,993,701
+475,unassigned_region-SPLIT1,475,unassigned_region
+284,475,284,475
+837,284,837,284
+622,475,622,475
+unassigned_region-SPLIT1,root,unassigned_region,root

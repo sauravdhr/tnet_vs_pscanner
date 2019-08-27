@@ -1,0 +1,13 @@
+unique.split,parent.split,host,parent.host
+6,unassigned_region-SPLIT1,6,unassigned_region
+565,6,565,6
+692,6,692,6
+470,6,470,6
+743-SPLIT1,unassigned_region-SPLIT1,743,unassigned_region
+59,unassigned_region-SPLIT1,59,unassigned_region
+42,59,42,59
+431,42,431,42
+109,unassigned_region-SPLIT1,109,unassigned_region
+743-SPLIT2,unassigned_region-SPLIT1,743,unassigned_region
+343,743-SPLIT2,343,743
+unassigned_region-SPLIT1,root,unassigned_region,root

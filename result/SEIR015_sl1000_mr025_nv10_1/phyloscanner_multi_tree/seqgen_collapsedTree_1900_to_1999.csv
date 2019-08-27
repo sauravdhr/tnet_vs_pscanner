@@ -1,0 +1,14 @@
+unique.split,parent.split,host,parent.host
+57,642,57,642
+642,unassigned_region-SPLIT1,642,unassigned_region
+265,642,265,642
+20,642,20,642
+994,20,994,20
+158,642,158,642
+337-SPLIT1,unassigned_region-SPLIT1,337,unassigned_region
+185,unassigned_region-SPLIT1,185,unassigned_region
+337-SPLIT2,185,337,185
+223,734,223,734
+734,unassigned_region-SPLIT1,734,unassigned_region
+557,734,557,734
+unassigned_region-SPLIT1,root,unassigned_region,root
