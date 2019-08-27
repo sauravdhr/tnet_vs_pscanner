@@ -3,6 +3,7 @@ import json
 # import dendropy
 # from dendropy.interop import seqgen
 import threading
+import get_results as gr
 
 # #############
 # truetree = dendropy.TreeList.get(path="true.tree", schema="newick")
@@ -183,12 +184,18 @@ def check_and_clean_seqgen(num):
 	info_count = 0
 	best_count = 0
 	rooted_count = 0
+	phylo_trees_count = 0
 	cur_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/seqgen/'
 	# cur_dir = '/home/saurav/research/seqgen_server/'
 	folders = next(os.walk(cur_dir))[1]
 	print('Total set:',len(folders))
 
 	for folder in folders:
+		phylo_trees = cur_dir+folder+'/phylo_trees'
+		if os.path.exists(phylo_trees):
+			phylo_trees_count += 1
+			# gr.create_phylo_multi_tree_input(folder)
+
 		for i in range(num):
 			best_tree = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_bestTree.' + str(i)
 			info_file = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_info.' + str(i)
@@ -206,6 +213,7 @@ def check_and_clean_seqgen(num):
 
 	print('Total :',len(folders)*10)
 	print('Best :' +str(best_count)+ ' Info :' +str(info_count)+ ' Rooted :'+str(rooted_count))
+	print('Phylo_trees :' +str(phylo_trees_count))
 
 def main():
 	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
