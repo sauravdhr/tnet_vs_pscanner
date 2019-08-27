@@ -172,28 +172,35 @@ def compare_tnet(folders):
 							F1[7],F1[8],F1[9],F1[10],F1[11],F1[12],F1[13],F1[14]))
 
 def main():
-	# cur_dir = 'seqgen/'
-	# folders = next(os.walk(cur_dir))[1]
+	cur_dir = 'seqgen/'
+	folders = next(os.walk(cur_dir))[1]
 
-	# for folder in folders:
-	# 	print('inside folder: ',folder)
-	# 	if all_rooted_trees_exist(folder):
-	# 		generate_seqgen_tnet_multiple(folder)
-	# 	else:
-	# 		print('MISSING ',folders)
+	for folder in folders:
+		print('inside folder: ',folder)
+		if all_rooted_trees_exist(folder):
+			print('OK')
+			result = 'result/'+folder+'/seqgen.tnet.multiple'
+
+			if os.path.exists(result):
+				print('Already exists')
+			else:
+				generate_seqgen_tnet_multiple(folder)
+		else:
+			print('MISSING')
+
 	# generate_seqgen_tnet_multiple('SEIR01_sl1000_mr025_nv20_20')
-	root_dir = '/home/saurav/research/Favites_data_from_sam/'
+	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
 
 	# print('Please choose one of the following datasets->')
 	# print(next(os.walk(root_dir))[1])
 
-	dataset = 'SEIR01'
-	print('You choose->',dataset)
+	# dataset = 'SEIR01'
+	# print('You choose->',dataset)
 
-	data_dir = root_dir + dataset
-	folders = next(os.walk(data_dir))[1]
-	print('There are total {} data points in this dataset'.format(len(folders)))
-	compare_tnet(folders)
+	# data_dir = root_dir + dataset
+	# folders = next(os.walk(data_dir))[1]
+	# print('There are total {} data points in this dataset'.format(len(folders)))
+	# compare_tnet(folders)
 
 	# for folder in folders:
 	# 	print('inside folder: ',folder, all_rooted_trees_exist(folder))

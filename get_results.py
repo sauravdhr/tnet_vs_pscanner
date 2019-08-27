@@ -371,17 +371,20 @@ def tnet_RAxML_bootstrap(data_dir, folders):
 
 
 def main():
-	root_dir = '/home/saurav/research/Favites_data_from_sam/'
+	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
 
-	print('Please choose one of the following datasets->')
-	# print(next(os.walk(root_dir))[1])
+	# print('Please choose one of the following datasets->')
+	# # print(next(os.walk(root_dir))[1])
 
-	dataset = 'SEIR01'
-	print('You choose->',dataset)
+	# dataset = 'SIR003'
+	# print('You choose->',dataset)
 
-	data_dir = root_dir + dataset
-	folders = next(os.walk(data_dir))[1]
-	# print('There are total {} data points in this dataset'.format(len(folders)))
+	# data_dir = root_dir + dataset
+	# folders = next(os.walk(data_dir))[1]
+
+	cur_dir = 'seqgen/'
+	folders = next(os.walk(cur_dir))[1]
+	print('There are total {} data points in this dataset'.format(len(folders)))
 
 	for folder in folders:
 		# print(folder, create_phylo_multi_tree_input(folder))

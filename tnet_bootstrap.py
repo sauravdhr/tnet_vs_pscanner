@@ -179,6 +179,31 @@ def raxml_scripts_threaded(folder):
 	for i in range(len(t)):
 		t[i].join()
 
+def check_and_clean_seqgen(num):
+	info_count = 0
+	best_count = 0
+	rooted_count = 0
+	cur_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/seqgen/'
+	# cur_dir = '/home/saurav/research/seqgen_server/'
+	folders = next(os.walk(cur_dir))[1]
+	print('Total set:',len(folders))
+
+	for folder in folders:
+		for i in range(num):
+			best_tree = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_bestTree.' + str(i)
+			info_file = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_info.' + str(i)
+			rooted_tree = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_rootedTree.' + str(i)
+
+			if os.path.exists(rooted_tree): rooted_count += 1
+			if os.path.exists(best_tree): best_count += 1
+			if os.path.exists(info_file):
+				info_count += 1
+				# os.remove(info_file)
+				print(folder, i)
+
+
+	print('Total :',len(folders)*10)
+	print('Best :' +str(best_count)+ ' Info :' +str(info_count)+ ' Rooted :'+str(rooted_count))
 
 def main():
 	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
@@ -211,8 +236,8 @@ def main():
 	# 	print('DONE UPTO',i+len(points))
 
 
-	root_raxml_best_trees(10)
-
+	check_and_clean_seqgen(10)
+	# root_raxml_best_trees(10)
 	# create_bash_scripts(10)
 	# raxml_scripts_threaded('raxml_scripts/')
 
