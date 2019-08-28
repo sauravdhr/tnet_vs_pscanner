@@ -166,14 +166,14 @@ def get_phyloscanner_edges(phylo_file):
 	f.close()
 	return phyloscanner_edges
 
-def get_phyloscanner_multi_tree_edges(phylo_file):
+def get_phyloscanner_multi_tree_edges(phylo_file, cutoff):
 	phyloscanner_edges = []
 	f = open(phylo_file)
 	f.readline()
 	for line in f.readlines():
 		parts = line.rstrip().split(',')
 		# print(parts)
-		if parts[2] == 'trans':
+		if parts[2] == 'trans' and int(parts[3]) > cutoff:
 			phyloscanner_edges.append(parts[0]+'->'+parts[1])
 		# print(parts)
 
@@ -202,6 +202,19 @@ def get_mul_tnet_edges(tnet_file, cutoff):
 	for line in f.readlines():
 		parts = line.rstrip().split('\t')
 		if int(parts[1]) >= cutoff:
+			tnet_edges.append(parts[0])
+		# print('M',parts)
+
+	f.close()
+	return tnet_edges
+
+
+def get_summary_tnet_edges(tnet_file, cutoff):
+	tnet_edges = []
+	f = open(tnet_file)
+	for line in f.readlines():
+		parts = line.rstrip().split('\t')
+		if int(parts[1]) > cutoff:
 			tnet_edges.append(parts[0])
 		# print('M',parts)
 

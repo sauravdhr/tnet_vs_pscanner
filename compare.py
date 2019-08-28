@@ -77,25 +77,26 @@ def all_rooted_trees_exist(folder):
 	return True
 
 def compare_tnet(folders):
-	TP_FP_FN_file = open('SEIR01.phylo.multi.tnet.80.TP_FP_FN.csv', 'w+')
+	TP_FP_FN_file = open('seqgen.phylo.tnet.50.TP_FP_FN.csv', 'w+')
 	TP_FP_FN_file.write('dataset,phylo_tp,phylo_fp,phylo_fn,phylo_multi_tp,phylo_multi_fp,phylo_multi_fn,tnet_tp,tnet_fp,tnet_fn,tnet_mul_tp,tnet_mul_fp,tnet_mul_fn,tnet_boot_tp,tnet_boot_fp,tnet_boot_fn\n')
-	F1_file = open('SEIR01.phylo.multi.tnet.80.F1.csv', 'w+')
+	F1_file = open('seqgen.phylo.tnet.50.F1.csv', 'w+')
 	F1_file.write('dataset,phylo_prec,phylo_rec,phylo_f1,phylo_multi_prec,phylo_multi_rec,phylo_multi_f1,tnet_prec,tnet_rec,tnet_f1,tnet_mul_prec,tnet_mul_rec,tnet_mul_f1,tnet_boot_prec,tnet_boot_rec,tnet_boot_f1\n')
 
 	for folder in folders:
-		# print('inside folder: ',folder, all_rooted_trees_exist(folder))
+		print('inside folder: ',folder)
 		if not all_rooted_trees_exist(folder):
 			continue
 
 		TP_FP_FN = []
 		F1 = []
 
-		real = set(gr.get_real_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/real_network.txt'))
-		phylo = set(gr.get_phyloscanner_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/phyloscanner/raxml.tree_collapsedTree.csv'))
-		phylo_multi = set(gr.get_phyloscanner_multi_tree_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv'))
-		tnet = set(gr.get_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/raxml.tree.tnet'))
-		tnet_mul = set(gr.get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/raxml.tree.tnet.multiple',80))
-		tnet_boot = set(gr.get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/seqgen.tnet.multiple', 800))
+		real = set(gr.get_real_edges('result/'+folder+'/real_network.txt'))
+		phylo = set(gr.get_phyloscanner_edges('result/'+folder+'/phyloscanner/raxml.tree_collapsedTree.csv'))
+		phylo_multi = set(gr.get_phyloscanner_multi_tree_edges('result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
+		tnet = set(gr.get_tnet_edges('result/'+folder+'/raxml.tree.tnet'))
+		tnet_mul = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',80))
+		# tnet_boot = set(gr.get_mul_tnet_edges('result/'+folder+'/seqgen.tnet.multiple', 800))
+		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/seqgen.tnet.summary', 5))
 
 
 		TP = len(real & phylo)
@@ -121,12 +122,16 @@ def compare_tnet(folders):
 		FP = len(phylo_multi - real)
 		FN = len(real - phylo_multi)
 		# print('Phylo_multi TP',len(TP),'FP',len(FP),'FN',len(FN))
-		precision = TP/(TP+FP)
-		recall = TP/(TP+FN)
+		# precision = TP/(TP+FP)
+		# recall = TP/(TP+FN)
 		f1 = 0
 		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
 			f1 = 2*(recall * precision) / (recall + precision)
 		except ZeroDivisionError:
+			precision = 0
+			recall = 0
 			f1 = 0
 
 		TP_FP_FN.append(TP)
@@ -178,12 +183,16 @@ def compare_tnet(folders):
 		FP = len(tnet_boot - real)
 		FN = len(real - tnet_boot)
 		# print('80_TNet_boot TP',len(TP),'FP',len(FP),'FN',len(FN))
-		precision = TP/(TP+FP)
-		recall = TP/(TP+FN)
+		# precision = TP/(TP+FP)
+		# recall = TP/(TP+FN)
 		f1 = 0
 		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
 			f1 = 2*(recall * precision) / (recall + precision)
 		except ZeroDivisionError:
+			precision = 0
+			recall = 0
 			f1 = 0
 
 		TP_FP_FN.append(TP)
@@ -205,9 +214,9 @@ def main():
 	cur_dir = 'seqgen/'
 	folders = next(os.walk(cur_dir))[1]
 
-	for folder in folders:
-		print('inside folder: ',folder)
-		create_seqgen_tnet_symmary(folder)
+	# for folder in folders:
+	# 	print('inside folder: ',folder)
+	# 	create_seqgen_tnet_symmary(folder)
 
 	# generate_seqgen_tnet_multiple('SEIR01_sl1000_mr025_nv20_20')
 	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
@@ -221,7 +230,7 @@ def main():
 	# data_dir = root_dir + dataset
 	# folders = next(os.walk(data_dir))[1]
 	# print('There are total {} data points in this dataset'.format(len(folders)))
-	# compare_tnet(folders)
+	compare_tnet(folders)
 
 	# for folder in folders:
 	# 	print('inside folder: ',folder, all_rooted_trees_exist(folder))
