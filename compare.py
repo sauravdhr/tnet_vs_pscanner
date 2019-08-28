@@ -213,6 +213,7 @@ def compare_tnet(folders):
 def main():
 	cur_dir = 'seqgen/'
 	folders = next(os.walk(cur_dir))[1]
+	folders.sort()
 
 	# for folder in folders:
 	# 	print('inside folder: ',folder)
