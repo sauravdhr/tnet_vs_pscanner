@@ -220,20 +220,22 @@ def check_and_clean_seqgen(num):
 
 
 def check_and_clean_result(num):
-	seqgen_tnet_multiple_count = 0
-	phylo_multi_tree_count = 0
+	seqgen_tnet_summ_count = 0
+	phylo_seqgen_summ_count = 0
 	cur_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'
 	folders = next(os.walk(cur_dir))[1]
 	print('Total set:',len(folders))
 
 	for folder in folders:
-		seqgen_tnet_multiple = cur_dir + folder +'/seqgen.tnet.multiple'
-		phylo_multi_dir = 'result/'+folder+'/phyloscanner_multi_tree'
+		seqgen_tnet_multiple = cur_dir + folder +'/seqgen.tnet.summary'
+		phylo_seqgen_summ = 'result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv'
 		
-		if not os.path.exists(seqgen_tnet_multiple): seqgen_tnet_multiple_count += 1
-		if not os.path.exists(phylo_multi_dir): phylo_multi_tree_count += 1
+		if os.path.exists(seqgen_tnet_multiple): seqgen_tnet_summ_count += 1
+		if os.path.exists(phylo_seqgen_summ):
+			phylo_seqgen_summ_count += 1
+			# print(folder)
 
-	print('SeqGen Tnet :' + str(seqgen_tnet_multiple_count) +' SeqGen Phylo :' +str(phylo_multi_tree_count))
+	print('SeqGen Tnet :' + str(seqgen_tnet_summ_count) +' SeqGen Phylo :' +str(phylo_seqgen_summ_count))
 
 
 def main():

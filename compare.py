@@ -1,4 +1,5 @@
 import os
+import operator
 import get_results as gr
 
 def generate_seqgen_tnet_multiple(folder):
@@ -32,6 +33,35 @@ def generate_seqgen_tnet_multiple(folder):
 		f.close()
 
 	print(edge_dict)
+	for x, y in edge_dict.items():
+		result.write('{}\t{}\n'.format(x, y))
+
+	result.close()
+
+
+def create_seqgen_tnet_symmary(folder, th = 80):
+	edge_dict = {}
+	result = open('result/'+folder+'/seqgen.tnet.summary', 'w+')
+
+	for i in range(10):
+		# Reading .multiple file
+		input_file = 'seqgen/'+folder+'/RAxML_'+ str(i)+'/Tnet.'  + str(i)+ '.multiple'
+		f = open(input_file)
+		for line in f.readlines():
+			parts = line.rstrip().split('\t')
+			edge = parts[0]
+			# print(parts)
+			if int(parts[1]) < th: continue
+			if edge in edge_dict:
+				edge_dict[edge] += 1
+			else:
+				edge_dict[edge] = 1
+
+		f.close()
+
+	# print(edge_dict)
+	edge_dict = dict(sorted(edge_dict.items(), key=operator.itemgetter(1),reverse=True))
+
 	for x, y in edge_dict.items():
 		result.write('{}\t{}\n'.format(x, y))
 
@@ -177,16 +207,7 @@ def main():
 
 	for folder in folders:
 		print('inside folder: ',folder)
-		if all_rooted_trees_exist(folder):
-			print('OK')
-			result = 'result/'+folder+'/seqgen.tnet.multiple'
-
-			if os.path.exists(result):
-				print('Already exists')
-			else:
-				generate_seqgen_tnet_multiple(folder)
-		else:
-			print('MISSING')
+		create_seqgen_tnet_symmary(folder)
 
 	# generate_seqgen_tnet_multiple('SEIR01_sl1000_mr025_nv20_20')
 	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
