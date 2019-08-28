@@ -181,6 +181,29 @@ def get_phyloscanner_multi_tree_edges(phylo_file, cutoff):
 	return phyloscanner_edges
 
 
+def get_phyloscanner_multi_tree_edges_with_complex(phylo_file, cutoff):
+	phyloscanner_edges = []
+	edge_dict = {}
+	f = open(phylo_file)
+	f.readline()
+	for line in f.readlines():
+		parts = line.rstrip().split(',')
+		# print(parts)
+		if parts[2] == 'trans' or parts[2] == 'complex':
+			edge = parts[0]+'->'+parts[1]
+			if edge in edge_dict:
+				edge_dict[edge] += int(parts[3])
+			else:
+				edge_dict[edge] = int(parts[3])
+		# print(parts)
+
+	f.close()
+	for x, y in edge_dict.items():
+		if y > cutoff: phyloscanner_edges.append(x)
+
+	return phyloscanner_edges
+
+
 def get_tnet_edges(tnet_file):
 	tnet_edges = []
 	f = open(tnet_file)

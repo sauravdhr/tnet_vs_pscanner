@@ -215,6 +215,11 @@ def main():
 	folders = next(os.walk(cur_dir))[1]
 	folders.sort()
 
+	TP_FP_FN_file = open('complex.seqgen.phylo.tnet.50.TP_FP_FN.csv', 'w+')
+	TP_FP_FN_file.write('dataset,without_complex_tp,without_complex_fp,without_complex_fn,with_complex_tp,with_complex_fp,with_complex_fn\n')
+	F1_file = open('complex.seqgen.phylo.tnet.50.F1.csv', 'w+')
+	F1_file.write('dataset,without_complex_prec,without_complex_rec,without_complex_f1,with_complex_prec,with_complex_rec,with_complex_f1\n')
+
 	# for folder in folders:
 	# 	print('inside folder: ',folder)
 	# 	create_seqgen_tnet_symmary(folder)
@@ -231,31 +236,76 @@ def main():
 	# data_dir = root_dir + dataset
 	# folders = next(os.walk(data_dir))[1]
 	# print('There are total {} data points in this dataset'.format(len(folders)))
-	compare_tnet(folders)
+	# compare_tnet(folders)
 
-	# for folder in folders:
-	# 	print('inside folder: ',folder, all_rooted_trees_exist(folder))
-	# 	if not all_rooted_trees_exist(folder):
-	# 		continue
-
-	# 	real = set(gr.get_real_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/real_network.txt'))
+	for folder in folders:
+		real = set(gr.get_real_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/real_network.txt'))
+		phylo_multi = set(gr.get_phyloscanner_multi_tree_edges('result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
+		phylo_multi_with_complex = set(gr.get_phyloscanner_multi_tree_edges_with_complex('result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
 	# 	tnet = set(gr.get_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/raxml.tree.tnet'))
 	# 	tnet_mul = set(gr.get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/raxml.tree.tnet.multiple',80))
 	# 	tnet_boot = set(gr.get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'+folder+'/seqgen.tnet.multiple', 800))
 
-	# 	TP = real & tnet
-	# 	FP = tnet - real
-	# 	FN = real - tnet
-	# 	print('TNet TP',len(TP),'FP',len(FP),'FN',len(FN))
+		TP_FP_FN = []
+		F1 = []
 
-	# 	TP = real & tnet_mul
-	# 	FP = tnet_mul - real
-	# 	FN = real - tnet_mul
-	# 	print('80_TNet_mul TP',len(TP),'FP',len(FP),'FN',len(FN))
+		TP = len(real & phylo_multi)
+		FP = len(phylo_multi - real)
+		FN = len(real - phylo_multi)
+		# print('Phylo TP',len(TP),'FP',len(FP),'FN',len(FN))
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
 
-	# 	TP = real & tnet_boot
-	# 	FP = tnet_boot - real
-	# 	FN = real - tnet_boot
-	# 	print('80_TNet_boot TP',len(TP),'FP',len(FP),'FN',len(FN))
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		TP = len(real & phylo_multi_with_complex)
+		FP = len(phylo_multi_with_complex - real)
+		FN = len(real - phylo_multi_with_complex)
+		# print('Phylo_multi TP',len(TP),'FP',len(FP),'FN',len(FN))
+		f1 = 0
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
+
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		TP_FP_FN_file.write('{},{},{},{},{},{},{}\n'.format(folder,TP_FP_FN[0],TP_FP_FN[1],TP_FP_FN[2],
+							TP_FP_FN[3],TP_FP_FN[4],TP_FP_FN[5]))
+		F1_file.write('{},{},{},{},{},{},{}\n'.format(folder,F1[0],F1[1],F1[2],F1[3],F1[4],F1[5]))
+	# 	TP = real & phylo_multi
+	# 	FP = phylo_multi - real
+	# 	FN = real - phylo_multi
+	# # 	print('TNet TP',len(TP),'FP',len(FP),'FN',len(FN))
+
+	# 	TP = real & phylo_multi
+	# 	FP = phylo_multi - real
+	# 	FN = real - phylo_multi
+	# 	print('phylo_multi TP',len(TP),'FP',len(FP),'FN',len(FN))
+
+	# # 	TP = real & tnet_boot
+	# # 	FP = tnet_boot - real
+	# # 	FN = real - tnet_boot
+	# # 	print('80_TNet_boot TP',len(TP),'FP',len(FP),'FN',len(FN))
 
 if __name__ == "__main__": main()
