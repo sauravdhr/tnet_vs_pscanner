@@ -185,6 +185,7 @@ def check_and_clean_seqgen(num):
 	best_count = 0
 	rooted_count = 0
 	phylo_trees_count = 0
+	tnet_count = 0
 	cur_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/seqgen/'
 	# cur_dir = '/home/saurav/research/seqgen_server/'
 	folders = next(os.walk(cur_dir))[1]
@@ -200,6 +201,7 @@ def check_and_clean_seqgen(num):
 			best_tree = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_bestTree.' + str(i)
 			info_file = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_info.' + str(i)
 			rooted_tree = cur_dir+folder+'/RAxML_'+ str(i)+'/RAxML_rootedTree.' + str(i)
+			tnet_file = cur_dir+folder+'/RAxML_'+ str(i)+'/Tnet.' + str(i)+'.multiple'
 
 			if os.path.exists(rooted_tree): rooted_count += 1
 			if os.path.exists(best_tree):
@@ -209,11 +211,30 @@ def check_and_clean_seqgen(num):
 				info_count += 1
 				# os.remove(info_file)
 				print(folder, i)
-
+			if os.path.exists(tnet_file): tnet_count += 1
 
 	print('Total :',len(folders)*10)
 	print('Best :' +str(best_count)+ ' Info :' +str(info_count)+ ' Rooted :'+str(rooted_count))
+	print('Tnet :' +str(tnet_count))
 	print('Phylo_trees :' +str(phylo_trees_count))
+
+
+def check_and_clean_result(num):
+	seqgen_tnet_multiple_count = 0
+	phylo_multi_tree_count = 0
+	cur_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'
+	folders = next(os.walk(cur_dir))[1]
+	print('Total set:',len(folders))
+
+	for folder in folders:
+		seqgen_tnet_multiple = cur_dir + folder +'/seqgen.tnet.multiple'
+		phylo_multi_dir = 'result/'+folder+'/phyloscanner_multi_tree'
+		
+		if not os.path.exists(seqgen_tnet_multiple): seqgen_tnet_multiple_count += 1
+		if not os.path.exists(phylo_multi_dir): phylo_multi_tree_count += 1
+
+	print('SeqGen Tnet :' + str(seqgen_tnet_multiple_count) +' SeqGen Phylo :' +str(phylo_multi_tree_count))
+
 
 def main():
 	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
@@ -247,6 +268,7 @@ def main():
 
 
 	check_and_clean_seqgen(10)
+	check_and_clean_result(10)
 	# root_raxml_best_trees(10)
 	# create_bash_scripts(10)
 	# raxml_scripts_threaded('raxml_scripts/')
