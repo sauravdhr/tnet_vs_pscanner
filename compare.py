@@ -273,7 +273,6 @@ def main():
 		FP = len(phylo_multi_with_complex - real)
 		FN = len(real - phylo_multi_with_complex)
 		# print('Phylo_multi TP',len(TP),'FP',len(FP),'FN',len(FN))
-		f1 = 0
 		try:
 			precision = TP/(TP+FP)
 			recall = TP/(TP+FN)
