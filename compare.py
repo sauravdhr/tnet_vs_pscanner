@@ -124,9 +124,9 @@ def all_rooted_trees_exist(folder):
 	return True
 
 def compare_directed(folders):
-	TP_FP_FN_file = open('directed.phylo.tnet.th_5.TP_FP_FN.csv', 'w+')
+	TP_FP_FN_file = open('directed.phylo.tnet.50.th_5.TP_FP_FN.csv', 'w+')
 	TP_FP_FN_file.write('dataset,phylo_tp,phylo_fp,phylo_fn,phylo_multi_tp,phylo_multi_fp,phylo_multi_fn,tnet_tp,tnet_fp,tnet_fn,tnet_mul_tp,tnet_mul_fp,tnet_mul_fn,tnet_boot_tp,tnet_boot_fp,tnet_boot_fn\n')
-	F1_file = open('directed.phylo.tnet.th_5.F1.csv', 'w+')
+	F1_file = open('directed.phylo.tnet.50.th_5.F1.csv', 'w+')
 	F1_file.write('dataset,phylo_prec,phylo_rec,phylo_f1,phylo_multi_prec,phylo_multi_rec,phylo_multi_f1,tnet_prec,tnet_rec,tnet_f1,tnet_mul_prec,tnet_mul_rec,tnet_mul_f1,tnet_boot_prec,tnet_boot_rec,tnet_boot_f1\n')
 
 	for folder in folders:
@@ -139,8 +139,8 @@ def compare_directed(folders):
 		phylo = set(gr.get_phyloscanner_edges('result/'+folder+'/phyloscanner/raxml.tree_collapsedTree.csv'))
 		phylo_multi = set(gr.get_phyloscanner_multi_tree_edges('result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
 		tnet = set(gr.get_tnet_edges('result/'+folder+'/raxml.tree.tnet'))
-		tnet_mul = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',80))
-		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/seqgen.tnet.summary', 5))
+		tnet_mul = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',50))
+		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/seqgen.tnet.summary.50', 5))
 
 
 		TP = len(real & phylo)
@@ -248,9 +248,9 @@ def compare_directed(folders):
 
 
 def compare_undirected(folders):
-	TP_FP_FN_file = open('undirected.phylo.tnet.th_5.TP_FP_FN.csv', 'w+')
+	TP_FP_FN_file = open('undirected.phylo.tnet.50.th_5.TP_FP_FN.csv', 'w+')
 	TP_FP_FN_file.write('dataset,phylo_tp,phylo_fp,phylo_fn,phylo_multi_tp,phylo_multi_fp,phylo_multi_fn,tnet_tp,tnet_fp,tnet_fn,tnet_mul_tp,tnet_mul_fp,tnet_mul_fn,tnet_boot_tp,tnet_boot_fp,tnet_boot_fn\n')
-	F1_file = open('undirected.phylo.tnet.th_5.F1.csv', 'w+')
+	F1_file = open('undirected.phylo.tnet.50.th_5.F1.csv', 'w+')
 	F1_file.write('dataset,phylo_prec,phylo_rec,phylo_f1,phylo_multi_prec,phylo_multi_rec,phylo_multi_f1,tnet_prec,tnet_rec,tnet_f1,tnet_mul_prec,tnet_mul_rec,tnet_mul_f1,tnet_boot_prec,tnet_boot_rec,tnet_boot_f1\n')
 
 	for folder in folders:
@@ -263,8 +263,8 @@ def compare_undirected(folders):
 		phylo = set(gr.get_phyloscanner_edges('result/'+folder+'/phyloscanner/raxml.tree_collapsedTree.csv'))
 		phylo_multi_with_complex = set(gr.get_phyloscanner_multi_tree_edges_with_complex('result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
 		tnet = set(gr.get_tnet_edges('result/'+folder+'/raxml.tree.tnet'))
-		tnet_mul = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple', 80))
-		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/undirected.seqgen.tnet.summary', 5))
+		tnet_mul = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple', 50))
+		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/undirected.seqgen.tnet.summary.50', 5))
 
 		TP = len(intersection(real, phylo))
 		FP = len(minus(phylo,real))
@@ -406,18 +406,18 @@ def main():
 	# print(new_folders)
 	# print(len(new_folders))
 	# compare_tnet(new_folders)
-	# compare_undirected(folders)
+	compare_directed(folders)
 
 	# TP_FP_FN_file = open('tnet.different.TP_FP_FN.csv', 'w+')
 	# TP_FP_FN_file.write('dataset,tnet_50_tp,tnet_50_fp,tnet_50_fn,tnet_80_tp,tnet_80_fp,tnet_80_fn,tnet_100_tp,tnet_100_fp,tnet_100_fn\n')
 	# F1_file = open('tnet.different.F1.csv', 'w+')
 	# F1_file.write('dataset,tnet_50_prec,tnet_50_rec,tnet_50_f1,tnet_80_prec,tnet_80_rec,tnet_80_f1,tnet_100_prec,tnet_100_rec,tnet_100_f1\n')
 
-	for folder in folders:
-		print('inside folder: ',folder)
-		create_seqgen_tnet_symmary(folder, 50)
-		create_undirected_seqgen_tnet_symmary(folder, 50)
-		# break
+	# for folder in folders:
+	# 	print('inside folder: ',folder)
+	# 	create_seqgen_tnet_symmary(folder, 50)
+	# 	create_undirected_seqgen_tnet_symmary(folder, 50)
+	# 	# break
 
 	# generate_seqgen_tnet_multiple('SEIR01_sl1000_mr025_nv20_20')
 	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
