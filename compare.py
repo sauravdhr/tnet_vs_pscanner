@@ -67,6 +67,51 @@ def create_seqgen_tnet_symmary(folder, th = 80):
 
 	result.close()
 
+def create_undirected_seqgen_tnet_symmary(folder, th = 80):
+	edge_dict = {}
+	result = open('result/'+folder+'/undirected.seqgen.tnet.summary', 'w+')
+
+	for i in range(10):
+		# Reading .multiple file
+		tnet_edges = {}
+		input_file = 'seqgen/'+folder+'/RAxML_'+ str(i)+'/Tnet.'  + str(i)+ '.multiple'
+		f = open(input_file)
+		for line in f.readlines():
+			parts = line.rstrip().split('\t')
+			edge = parts[0]
+			parts_edge = edge.rstrip().split('->')
+			rev_edge = parts_edge[1]+ '->' +parts_edge[0]
+			# print(edge,rev_edge)
+
+			if edge in tnet_edges:
+				tnet_edges[edge] += int(parts[1])
+			elif rev_edge in tnet_edges:
+				tnet_edges[rev_edge] += int(parts[1])
+			else:
+				tnet_edges[edge] = int(parts[1])
+
+		f.close()
+
+		# tnet_edges = dict(sorted(tnet_edges.items(), key=operator.itemgetter(1),reverse=True))
+		# print(i,tnet_edges)
+
+		for edge, count in tnet_edges.items():
+			if count < th: continue
+			print(edge, count)
+			if edge in edge_dict:
+				edge_dict[edge] += 1
+			else:
+				edge_dict[edge] = 1
+
+		print(edge_dict,len(edge_dict))
+		# break
+
+	edge_dict = dict(sorted(edge_dict.items(), key=operator.itemgetter(1),reverse=True))
+	for x, y in edge_dict.items():
+		result.write('{}\t{}\n'.format(x, y))
+
+	result.close()
+
 
 def all_rooted_trees_exist(folder):
 	for i in range(10):
@@ -230,9 +275,9 @@ def compare_tnet(folders):
 
 
 def compare_undirected(folders):
-	TP_FP_FN_file = open('undirected.phylo.complex.tnet.5.TP_FP_FN.csv', 'w+')
+	TP_FP_FN_file = open('undirected.phylo.complex.tnet.modified.5.TP_FP_FN.csv', 'w+')
 	TP_FP_FN_file.write('dataset,phylo_tp,phylo_fp,phylo_fn,phylo_multi_tp,phylo_multi_fp,phylo_multi_fn,phylo_complex_tp,phylo_complex_fp,phylo_complex_fn,tnet_tp,tnet_fp,tnet_fn,tnet_mul_tp,tnet_mul_fp,tnet_mul_fn,tnet_boot_tp,tnet_boot_fp,tnet_boot_fn\n')
-	F1_file = open('undirected.phylo.complex.tnet.5.F1.csv', 'w+')
+	F1_file = open('undirected.phylo.complex.tnet.modified.5.F1.csv', 'w+')
 	F1_file.write('dataset,phylo_prec,phylo_rec,phylo_f1,phylo_multi_prec,phylo_multi_rec,phylo_multi_f1,phylo_complex_prec,phylo_complex_rec,phylo_complex_f1,tnet_prec,tnet_rec,tnet_f1,tnet_mul_prec,tnet_mul_rec,tnet_mul_f1,tnet_boot_prec,tnet_boot_rec,tnet_boot_f1\n')
 
 	for folder in folders:
@@ -249,7 +294,7 @@ def compare_undirected(folders):
 		phylo_multi_with_complex = set(gr.get_phyloscanner_multi_tree_edges_with_complex('result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
 		tnet = set(gr.get_tnet_edges('result/'+folder+'/raxml.tree.tnet'))
 		tnet_mul = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',80))
-		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/seqgen.tnet.summary', 5))
+		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/undirected.seqgen.tnet.summary', 5))
 
 
 		TP = len(intersection(real, phylo))
@@ -419,7 +464,9 @@ def main():
 
 	# for folder in folders:
 	# 	print('inside folder: ',folder)
-	# 	create_seqgen_tnet_symmary(folder)
+	# 	# create_seqgen_tnet_symmary(folder)
+	# 	create_undirected_seqgen_tnet_symmary(folder)
+	# 	# break
 
 	# generate_seqgen_tnet_multiple('SEIR01_sl1000_mr025_nv20_20')
 	# root_dir = '/home/saurav/research/Favites_data_from_sam/'

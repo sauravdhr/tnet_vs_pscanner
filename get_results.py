@@ -34,15 +34,10 @@ def tnet_multiple(input_file, output_file, time):
 
 	# edge_dict = dict(sorted(edge_dict.items(), key=operator.itemgetter(1),reverse=True))
 	# print(edge_dict)
-	# print(list(edge_dict.keys())[-1])
-	# last_key = list(edge_dict.keys())[-1]
+
 	for x, y in edge_dict.items():
 		# print(x, y)
 		result.write('{}\t{}\n'.format(x, y))
-		# if x == last_key:
-		# 	result.write('{}\t{}'.format(x, y))
-		# else:
-		# 	result.write('{}\t{}\n'.format(x, y))
 
 	result.close()
 
