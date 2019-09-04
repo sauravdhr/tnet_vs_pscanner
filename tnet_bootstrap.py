@@ -227,10 +227,12 @@ def check_and_clean_result(num):
 	print('Total set:',len(folders))
 
 	for folder in folders:
-		seqgen_tnet_multiple = cur_dir + folder +'/seqgen.tnet.summary'
+		seqgen_tnet_multiple = cur_dir + folder +'/undirected.seqgen.tnet.summary'
 		phylo_seqgen_summ = 'result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv'
 		
-		if os.path.exists(seqgen_tnet_multiple): seqgen_tnet_summ_count += 1
+		if os.path.exists(seqgen_tnet_multiple):
+			seqgen_tnet_summ_count += 1
+			os.remove(seqgen_tnet_multiple)
 		if os.path.exists(phylo_seqgen_summ):
 			phylo_seqgen_summ_count += 1
 			# print(folder)
@@ -269,7 +271,7 @@ def main():
 	# 	print('DONE UPTO',i+len(points))
 
 
-	check_and_clean_seqgen(10)
+	# check_and_clean_seqgen(10)
 	check_and_clean_result(10)
 	# root_raxml_best_trees(10)
 	# create_bash_scripts(10)

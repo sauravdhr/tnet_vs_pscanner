@@ -98,15 +98,17 @@ def create_undirected_seqgen_tnet_symmary(folder, th = 80):
 		for edge, count in tnet_edges.items():
 			if count < th: continue
 			print(edge, count)
+			parts_edge = edge.rstrip().split('->')
+			rev_edge = parts_edge[1]+ '->' +parts_edge[0]
 			if edge in edge_dict:
 				edge_dict[edge] += 1
+			elif rev_edge in edge_dict:
+				edge_dict[rev_edge] += 1
 			else:
 				edge_dict[edge] = 1
 
-		print(edge_dict,len(edge_dict))
-		# break
-
 	edge_dict = dict(sorted(edge_dict.items(), key=operator.itemgetter(1),reverse=True))
+	print(edge_dict)
 	for x, y in edge_dict.items():
 		result.write('{}\t{}\n'.format(x, y))
 

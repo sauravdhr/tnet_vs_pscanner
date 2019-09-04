@@ -239,7 +239,6 @@ def get_summary_tnet_edges(tnet_file, cutoff):
 	f.close()
 	return tnet_edges
 
-
 def calculate_f1_score(TP, FP, FN):
 	precision = TP/(TP+FP)
 	recall = TP/(TP+FN)
