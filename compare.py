@@ -41,7 +41,7 @@ def generate_seqgen_tnet_multiple(folder):
 
 def create_seqgen_tnet_symmary(folder, th = 80):
 	edge_dict = {}
-	result = open('result/'+folder+'/seqgen.tnet.summary', 'w+')
+	result = open('result/'+folder+'/seqgen.tnet.summary.50', 'w+')
 
 	for i in range(10):
 		# Reading .multiple file
@@ -69,7 +69,7 @@ def create_seqgen_tnet_symmary(folder, th = 80):
 
 def create_undirected_seqgen_tnet_symmary(folder, th = 80):
 	edge_dict = {}
-	result = open('result/'+folder+'/undirected.seqgen.tnet.summary', 'w+')
+	result = open('result/'+folder+'/undirected.seqgen.tnet.summary.50', 'w+')
 
 	for i in range(10):
 		# Reading .multiple file
@@ -408,16 +408,16 @@ def main():
 	# compare_tnet(new_folders)
 	# compare_undirected(folders)
 
-	TP_FP_FN_file = open('tnet.different.TP_FP_FN.csv', 'w+')
-	TP_FP_FN_file.write('dataset,tnet_50_tp,tnet_50_fp,tnet_50_fn,tnet_80_tp,tnet_80_fp,tnet_80_fn,tnet_100_tp,tnet_100_fp,tnet_100_fn\n')
-	F1_file = open('tnet.different.F1.csv', 'w+')
-	F1_file.write('dataset,tnet_50_prec,tnet_50_rec,tnet_50_f1,tnet_80_prec,tnet_80_rec,tnet_80_f1,tnet_100_prec,tnet_100_rec,tnet_100_f1\n')
+	# TP_FP_FN_file = open('tnet.different.TP_FP_FN.csv', 'w+')
+	# TP_FP_FN_file.write('dataset,tnet_50_tp,tnet_50_fp,tnet_50_fn,tnet_80_tp,tnet_80_fp,tnet_80_fn,tnet_100_tp,tnet_100_fp,tnet_100_fn\n')
+	# F1_file = open('tnet.different.F1.csv', 'w+')
+	# F1_file.write('dataset,tnet_50_prec,tnet_50_rec,tnet_50_f1,tnet_80_prec,tnet_80_rec,tnet_80_f1,tnet_100_prec,tnet_100_rec,tnet_100_f1\n')
 
-	# for folder in folders:
-	# 	print('inside folder: ',folder)
-	# 	# create_seqgen_tnet_symmary(folder)
-	# 	create_undirected_seqgen_tnet_symmary(folder)
-	# 	# break
+	for folder in folders:
+		print('inside folder: ',folder)
+		create_seqgen_tnet_symmary(folder, 50)
+		create_undirected_seqgen_tnet_symmary(folder, 50)
+		# break
 
 	# generate_seqgen_tnet_multiple('SEIR01_sl1000_mr025_nv20_20')
 	# root_dir = '/home/saurav/research/Favites_data_from_sam/'
@@ -433,77 +433,77 @@ def main():
 	# print('There are total {} data points in this dataset'.format(len(folders)))
 	# compare_tnet(folders)
 
-	for folder in folders:
-		real = set(gr.get_real_edges('result/'+folder+'/real_network.txt'))
-		tnet_mul_50 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',50))
-		tnet_mul_80 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',80))
-		tnet_mul_100 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',100))
+	# for folder in folders:
+	# 	real = set(gr.get_real_edges('result/'+folder+'/real_network.txt'))
+	# 	tnet_mul_50 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',50))
+	# 	tnet_mul_80 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',80))
+	# 	tnet_mul_100 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',100))
 
-		TP_FP_FN = []
-		F1 = []
+	# 	TP_FP_FN = []
+	# 	F1 = []
 
-		TP = len(real & tnet_mul_50)
-		FP = len(tnet_mul_50 - real)
-		FN = len(real - tnet_mul_50)
+	# 	TP = len(real & tnet_mul_50)
+	# 	FP = len(tnet_mul_50 - real)
+	# 	FN = len(real - tnet_mul_50)
 
-		try:
-			precision = TP/(TP+FP)
-			recall = TP/(TP+FN)
-			f1 = 2*(recall * precision) / (recall + precision)
-		except ZeroDivisionError:
-			precision = 0
-			recall = 0
-			f1 = 0
+	# 	try:
+	# 		precision = TP/(TP+FP)
+	# 		recall = TP/(TP+FN)
+	# 		f1 = 2*(recall * precision) / (recall + precision)
+	# 	except ZeroDivisionError:
+	# 		precision = 0
+	# 		recall = 0
+	# 		f1 = 0
 
-		TP_FP_FN.append(TP)
-		TP_FP_FN.append(FP)
-		TP_FP_FN.append(FN)
-		F1.append(round(precision,3))
-		F1.append(round(recall,3))
-		F1.append(round(f1,3))
+	# 	TP_FP_FN.append(TP)
+	# 	TP_FP_FN.append(FP)
+	# 	TP_FP_FN.append(FN)
+	# 	F1.append(round(precision,3))
+	# 	F1.append(round(recall,3))
+	# 	F1.append(round(f1,3))
 
-		TP = len(real & tnet_mul_80)
-		FP = len(tnet_mul_80 - real)
-		FN = len(real - tnet_mul_80)
+	# 	TP = len(real & tnet_mul_80)
+	# 	FP = len(tnet_mul_80 - real)
+	# 	FN = len(real - tnet_mul_80)
 
-		try:
-			precision = TP/(TP+FP)
-			recall = TP/(TP+FN)
-			f1 = 2*(recall * precision) / (recall + precision)
-		except ZeroDivisionError:
-			precision = 0
-			recall = 0
-			f1 = 0
+	# 	try:
+	# 		precision = TP/(TP+FP)
+	# 		recall = TP/(TP+FN)
+	# 		f1 = 2*(recall * precision) / (recall + precision)
+	# 	except ZeroDivisionError:
+	# 		precision = 0
+	# 		recall = 0
+	# 		f1 = 0
 
-		TP_FP_FN.append(TP)
-		TP_FP_FN.append(FP)
-		TP_FP_FN.append(FN)
-		F1.append(round(precision,3))
-		F1.append(round(recall,3))
-		F1.append(round(f1,3))
+	# 	TP_FP_FN.append(TP)
+	# 	TP_FP_FN.append(FP)
+	# 	TP_FP_FN.append(FN)
+	# 	F1.append(round(precision,3))
+	# 	F1.append(round(recall,3))
+	# 	F1.append(round(f1,3))
 
-		TP = len(real & tnet_mul_100)
-		FP = len(tnet_mul_100 - real)
-		FN = len(real - tnet_mul_100)
+	# 	TP = len(real & tnet_mul_100)
+	# 	FP = len(tnet_mul_100 - real)
+	# 	FN = len(real - tnet_mul_100)
 
-		try:
-			precision = TP/(TP+FP)
-			recall = TP/(TP+FN)
-			f1 = 2*(recall * precision) / (recall + precision)
-		except ZeroDivisionError:
-			precision = 0
-			recall = 0
-			f1 = 0
+	# 	try:
+	# 		precision = TP/(TP+FP)
+	# 		recall = TP/(TP+FN)
+	# 		f1 = 2*(recall * precision) / (recall + precision)
+	# 	except ZeroDivisionError:
+	# 		precision = 0
+	# 		recall = 0
+	# 		f1 = 0
 
-		TP_FP_FN.append(TP)
-		TP_FP_FN.append(FP)
-		TP_FP_FN.append(FN)
-		F1.append(round(precision,3))
-		F1.append(round(recall,3))
-		F1.append(round(f1,3))
+	# 	TP_FP_FN.append(TP)
+	# 	TP_FP_FN.append(FP)
+	# 	TP_FP_FN.append(FN)
+	# 	F1.append(round(precision,3))
+	# 	F1.append(round(recall,3))
+	# 	F1.append(round(f1,3))
 
-		TP_FP_FN_file.write('{},{},{},{},{},{},{},{},{},{}\n'.format(folder,TP_FP_FN[0],TP_FP_FN[1],TP_FP_FN[2],
-						TP_FP_FN[3],TP_FP_FN[4],TP_FP_FN[5],TP_FP_FN[6],TP_FP_FN[7],TP_FP_FN[8]))
-		F1_file.write('{},{},{},{},{},{},{},{},{},{}\n'.format(folder,F1[0],F1[1],F1[2],F1[3],F1[4],F1[5],F1[6],F1[7],F1[8]))
+	# 	TP_FP_FN_file.write('{},{},{},{},{},{},{},{},{},{}\n'.format(folder,TP_FP_FN[0],TP_FP_FN[1],TP_FP_FN[2],
+	# 					TP_FP_FN[3],TP_FP_FN[4],TP_FP_FN[5],TP_FP_FN[6],TP_FP_FN[7],TP_FP_FN[8]))
+	# 	F1_file.write('{},{},{},{},{},{},{},{},{},{}\n'.format(folder,F1[0],F1[1],F1[2],F1[3],F1[4],F1[5],F1[6],F1[7],F1[8]))
 
 if __name__ == "__main__": main()
