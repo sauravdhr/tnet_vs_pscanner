@@ -132,7 +132,7 @@ def main():
 		# create_seqgen_sequences(folder,10)
 		create_raxml_trees(folder, 10)
 
-		# cur_dir = 'result/' + folder + '/'
+		# cur_dir = 'outputs/' + folder + '/'
 		# break
 
 

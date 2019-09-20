@@ -222,13 +222,13 @@ def check_and_clean_seqgen(num):
 def check_and_clean_result(num):
 	seqgen_tnet_summ_count = 0
 	phylo_seqgen_summ_count = 0
-	cur_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/'
+	cur_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/outputs/'
 	folders = next(os.walk(cur_dir))[1]
 	print('Total set:',len(folders))
 
 	for folder in folders:
 		seqgen_tnet_multiple = cur_dir + folder +'/undirected.seqgen.tnet.summary'
-		phylo_seqgen_summ = 'result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv'
+		phylo_seqgen_summ = 'outputs/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv'
 		
 		if os.path.exists(seqgen_tnet_multiple):
 			seqgen_tnet_summ_count += 1
@@ -261,7 +261,7 @@ def main():
 		# create_seqgen_sequences(folder,10)
 		# create_raxml_trees(folder, 10)
 
-		# cur_dir = 'result/' + folder + '/'
+		# cur_dir = 'outputs/' + folder + '/'
 		# break
 	# print('DONE')
 
