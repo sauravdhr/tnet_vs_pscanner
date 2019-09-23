@@ -17,7 +17,7 @@ from ete3 import Tree
 # 	print('Now in folder->',folder)
 # 	input_file = data_dir + '/' + folder + '/FAVITES_output/error_free_files/transmission_network.txt'
 # 	# out_dir = data_dir + '/' + folder + '/clean_data/'
-# 	out_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/' + folder + '/real_network.txt'
+# 	out_dir = '/home/saurav/Dropbox/Research/tnet_vs_pscanner/outputs/' + folder + '/real_network.txt'
 	# print('Files here->',next(os.walk(cur_dir))[2])
 
 	# t = Tree(input_file)

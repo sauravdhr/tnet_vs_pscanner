@@ -14,7 +14,7 @@ def generate_seqgen_tnet_multiple(folder):
 
 
 	edge_dict = {}
-	result = open('result/'+folder+'/seqgen.tnet.multiple', 'w+')
+	result = open('outputs/'+folder+'/seqgen.tnet.multiple', 'w+')
 
 	for i in range(10):
 		# Reading .multiple file
@@ -41,7 +41,7 @@ def generate_seqgen_tnet_multiple(folder):
 
 def create_seqgen_tnet_symmary(folder, th = 80):
 	edge_dict = {}
-	result = open('result/'+folder+'/seqgen.tnet.summary.50', 'w+')
+	result = open('outputs/'+folder+'/seqgen.tnet.summary.50', 'w+')
 
 	for i in range(10):
 		# Reading .multiple file
@@ -69,7 +69,7 @@ def create_seqgen_tnet_symmary(folder, th = 80):
 
 def create_undirected_seqgen_tnet_symmary(folder, th = 80):
 	edge_dict = {}
-	result = open('result/'+folder+'/undirected.seqgen.tnet.summary.50', 'w+')
+	result = open('outputs/'+folder+'/undirected.seqgen.tnet.summary.50', 'w+')
 
 	for i in range(10):
 		# Reading .multiple file
@@ -135,12 +135,12 @@ def compare_directed(folders):
 		TP_FP_FN = []
 		F1 = []
 
-		real = set(gr.get_real_edges('result/'+folder+'/real_network.txt'))
-		phylo = set(gr.get_phyloscanner_edges('result/'+folder+'/phyloscanner/raxml.tree_collapsedTree.csv'))
-		phylo_multi = set(gr.get_phyloscanner_multi_tree_edges('result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
-		tnet = set(gr.get_tnet_edges('result/'+folder+'/raxml.tree.tnet'))
-		tnet_mul = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',50))
-		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/seqgen.tnet.summary.50', 5))
+		real = set(gr.get_real_edges('outputs/'+folder+'/real_network.txt'))
+		phylo = set(gr.get_phyloscanner_edges('outputs/'+folder+'/phyloscanner/raxml.tree_collapsedTree.csv'))
+		phylo_multi = set(gr.get_phyloscanner_multi_tree_edges('outputs/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
+		tnet = set(gr.get_tnet_edges('outputs/'+folder+'/raxml.tree.tnet'))
+		tnet_mul = set(gr.get_mul_tnet_edges('outputs/'+folder+'/raxml.tree.tnet.multiple',50))
+		tnet_boot = set(gr.get_summary_tnet_edges('outputs/'+folder+'/seqgen.tnet.summary.50', 5))
 
 
 		TP = len(real & phylo)
@@ -259,12 +259,12 @@ def compare_undirected(folders):
 		TP_FP_FN = []
 		F1 = []
 
-		real = set(gr.get_real_edges('result/'+folder+'/real_network.txt'))
-		phylo = set(gr.get_phyloscanner_edges('result/'+folder+'/phyloscanner/raxml.tree_collapsedTree.csv'))
-		phylo_multi_with_complex = set(gr.get_phyloscanner_multi_tree_edges_with_complex('result/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
-		tnet = set(gr.get_tnet_edges('result/'+folder+'/raxml.tree.tnet'))
-		tnet_mul = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple', 50))
-		tnet_boot = set(gr.get_summary_tnet_edges('result/'+folder+'/undirected.seqgen.tnet.summary.50', 5))
+		real = set(gr.get_real_edges('outputs/'+folder+'/real_network.txt'))
+		phylo = set(gr.get_phyloscanner_edges('outputs/'+folder+'/phyloscanner/raxml.tree_collapsedTree.csv'))
+		phylo_multi_with_complex = set(gr.get_phyloscanner_multi_tree_edges_with_complex('outputs/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
+		tnet = set(gr.get_tnet_edges('outputs/'+folder+'/raxml.tree.tnet'))
+		tnet_mul = set(gr.get_mul_tnet_edges('outputs/'+folder+'/raxml.tree.tnet.multiple', 50))
+		tnet_boot = set(gr.get_summary_tnet_edges('outputs/'+folder+'/undirected.seqgen.tnet.summary.50', 5))
 
 		TP = len(intersection(real, phylo))
 		FP = len(minus(phylo,real))
@@ -434,10 +434,10 @@ def main():
 	# compare_tnet(folders)
 
 	# for folder in folders:
-	# 	real = set(gr.get_real_edges('result/'+folder+'/real_network.txt'))
-	# 	tnet_mul_50 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',50))
-	# 	tnet_mul_80 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',80))
-	# 	tnet_mul_100 = set(gr.get_mul_tnet_edges('result/'+folder+'/raxml.tree.tnet.multiple',100))
+	# 	real = set(gr.get_real_edges('outputs/'+folder+'/real_network.txt'))
+	# 	tnet_mul_50 = set(gr.get_mul_tnet_edges('outputs/'+folder+'/raxml.tree.tnet.multiple',50))
+	# 	tnet_mul_80 = set(gr.get_mul_tnet_edges('outputs/'+folder+'/raxml.tree.tnet.multiple',80))
+	# 	tnet_mul_100 = set(gr.get_mul_tnet_edges('outputs/'+folder+'/raxml.tree.tnet.multiple',100))
 
 	# 	TP_FP_FN = []
 	# 	F1 = []

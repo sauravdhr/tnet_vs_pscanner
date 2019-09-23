@@ -43,7 +43,7 @@ def tnet_multiple(input_file, output_file, time):
 
 def phyloscanner_multi_tree(folder):
 	phylo_trees_dir = 'seqgen/'+folder+'/phylo_trees'
-	result_dir = 'result/'+folder+'/phyloscanner_multi_tree'
+	result_dir = 'outputs/'+folder+'/phyloscanner_multi_tree'
 	if os.path.exists(result_dir): return True
 	if not os.path.exists(phylo_trees_dir): return False
 
@@ -90,7 +90,7 @@ def generate_outputs(data_dir, folders):
 		# print('Files here->',next(os.walk(cur_dir))[2])
 
 		# Create results directory
-		out_dir = 'result/' + folder
+		out_dir = 'outputs/' + folder
 		# os.mkdir(out_dir)
 
 		# Running TNet on the RAxML tree
@@ -250,7 +250,7 @@ def calculate_f1_score(TP, FP, FN):
 	return round(f1,3)
 
 def generate_TP_FP_FN():
-	folders = next(os.walk('result/'))[1]
+	folders = next(os.walk('outputs/'))[1]
 	folders.sort()
 
 	raxml_compare = open('raxml.all.result.csv', 'w+')
@@ -260,7 +260,7 @@ def generate_TP_FP_FN():
 
 	for folder in folders:
 		print('Now in folder->',folder)
-		cur_dir = 'result/' + folder + '/'
+		cur_dir = 'outputs/' + folder + '/'
 		result = []
 		real_set = set(get_real_edges(cur_dir + 'real_network.txt'))
 		# print(len(real_set))
@@ -359,7 +359,7 @@ def tnet_RAxML_bootstrap(data_dir, folders):
 		cur_file = cur_dir + 'RAxML_bootstrap.' + folder
 		# print('Files here->',next(os.walk(cur_dir))[2])
 		edge_dict = {}
-		result = open('result/' + folder+ '/bootstrap.tnet.multiple', 'w+')
+		result = open('outputs/' + folder+ '/bootstrap.tnet.multiple', 'w+')
 
 		bootstrap_all = open(cur_file)
 		lines = bootstrap_all.readlines()
@@ -427,9 +427,9 @@ def main():
 		# generate_f1_score('truetree')
 		# break
 
-	# real = set(get_real_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/real_network.txt'))
-	# tnet_mul = set(get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/raxml.tree.tnet.multiple',80))
-	# tnet_boot = set(get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/result/SEIR01_sl250_mr025_nv10_1/bootstrap.tnet.multiple',80))
+	# real = set(get_real_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/outputs/SEIR01_sl250_mr025_nv10_1/real_network.txt'))
+	# tnet_mul = set(get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/outputs/SEIR01_sl250_mr025_nv10_1/raxml.tree.tnet.multiple',80))
+	# tnet_boot = set(get_mul_tnet_edges('/home/saurav/Dropbox/Research/tnet_vs_pscanner/outputs/SEIR01_sl250_mr025_nv10_1/bootstrap.tnet.multiple',80))
 
 	# TP = real & tnet_mul
 	# FP = tnet_mul - real

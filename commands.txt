@@ -1,2 +1,8 @@
 raxml rooting:
 raxmlHPC -f I -m GTRGAMMA -t RAxML_bestTree.SEIR01_sl250_mr025_nv10_1 -n tnet.rooted
+
+
+
+
+raxml on CDC data:
+raxmlHPC -f a -m GTRGAMMA -p 12345 -x 12345 -N 20 -s seqgen.seqs.0 -n seqgen -k
