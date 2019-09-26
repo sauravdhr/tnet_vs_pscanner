@@ -382,3 +382,71 @@ Bootstrap[13]: Time 66.861112 seconds, bootstrap likelihood -30235.517452, best 
 Bootstrap[14]: Time 89.296186 seconds, bootstrap likelihood -29069.774709, best rearrangement setting 12
 Bootstrap[15]: Time 105.108198 seconds, bootstrap likelihood -28467.390112, best rearrangement setting 15
 Bootstrap[16]: Time 102.151256 seconds, bootstrap likelihood -26838.295610, best rearrangement setting 12
+Bootstrap[17]: Time 98.481247 seconds, bootstrap likelihood -29929.884164, best rearrangement setting 12
+Bootstrap[18]: Time 50.897748 seconds, bootstrap likelihood -31365.432147, best rearrangement setting 5
+Bootstrap[19]: Time 73.319859 seconds, bootstrap likelihood -27414.765407, best rearrangement setting 8
+
+
+Overall Time for 20 Rapid Bootstraps 1604.548562 seconds
+Average Time per Rapid Bootstrap 80.227428 seconds
+
+Starting ML Search ...
+
+Fast ML optimization finished
+
+Fast ML search Time: 2880.834796 seconds
+
+Slow ML Search 0 Likelihood: -31476.863791
+Slow ML Search 1 Likelihood: -31504.511692
+Slow ML Search 2 Likelihood: -31508.524686
+Slow ML Search 3 Likelihood: -31494.759518
+Slow ML optimization finished
+
+Slow ML search Time: 6138.476009 seconds
+Thorough ML search Time: 304.285868 seconds
+
+Final ML Optimization Likelihood: -31475.439114
+
+Model Information:
+
+Model Parameters of Partition 0, Name: No Name Provided, Type of Data: DNA
+alpha: 1.061768
+Tree-Length: 40.830853
+rate A <-> C: 1.575546
+rate A <-> G: 7.248819
+rate A <-> T: 1.463653
+rate C <-> G: 1.217597
+rate C <-> T: 7.391418
+rate G <-> T: 1.000000
+
+freq pi(A): 0.182013
+freq pi(C): 0.289978
+freq pi(G): 0.309965
+freq pi(T): 0.218045
+
+
+ML search took 9323.599796 secs or 2.589889 hours
+
+Combined Bootstrap and ML search took 10928.148375 secs or 3.035597 hours
+
+Drawing Bootstrap Support Values on best-scoring ML tree ...
+
+
+
+Found 1 tree in File /home/saurav/research/tnet_vs_pscanner/CDC/RAxML_output/RAxML_bestTree.cdc
+
+
+
+Found 1 tree in File /home/saurav/research/tnet_vs_pscanner/CDC/RAxML_output/RAxML_bestTree.cdc
+
+Program execution info written to /home/saurav/research/tnet_vs_pscanner/CDC/RAxML_output/RAxML_info.cdc
+All 20 bootstrapped trees written to: /home/saurav/research/tnet_vs_pscanner/CDC/RAxML_output/RAxML_bootstrap.cdc
+
+Best-scoring ML tree written to: /home/saurav/research/tnet_vs_pscanner/CDC/RAxML_output/RAxML_bestTree.cdc
+
+Best-scoring ML tree with support values written to: /home/saurav/research/tnet_vs_pscanner/CDC/RAxML_output/RAxML_bipartitions.cdc
+
+Best-scoring ML tree with support values as branch labels written to: /home/saurav/research/tnet_vs_pscanner/CDC/RAxML_output/RAxML_bipartitionsBranchLabels.cdc
+
+Overall execution time for full ML analysis: 10928.230871 secs or 3.035620 hours or 0.126484 days
+
