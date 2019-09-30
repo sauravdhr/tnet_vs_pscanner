@@ -2,6 +2,23 @@ from Bio import SeqIO
 import operator
 import shutil, os
 
+def get_true_transmission_edges():
+	sources = ['AA45','AC124','AI004','AJ199','AQ89','AW2','BA3','BB45','BC46','BJ28']
+	files = next(os.walk('CDC/fasta_files'))[2]
+	files.sort()
+
+	true_edges = []
+
+	for source in sources:
+		for file in files:
+			if source[:2] == file[:2]:
+				host = file.rstrip().split('_')[0]
+				if source != host:
+					true_edges.append(source +'->'+ host)
+
+	return true_edges
+
+
 def create_cdc_fasta_file():
 	files = next(os.walk('CDC/fasta_files'))[2]
 	files.sort()
@@ -131,12 +148,14 @@ def run_tnet_multiple_times(input_file, output_file, time = 100):
 
 
 def run_tnet_cdc(input_folder, output_folder, th):
-	tree_list = next(os.walk(input_folder))[2]
+	# tree_list = next(os.walk(input_folder))[2]
+	tree_list = ['RAxML_rootedTree.8']
+	print(tree_list)
 
 	for tree in tree_list:
 		input_file = input_folder +'/'+ tree
 		output_file = output_folder +'/CDC_bootstrap.'+ tree.rstrip().split('.')[1]
-		print(input_file, output_file)
+		# print(input_file, output_file)
 		run_tnet_multiple_times(input_file, output_file)
 		# break
 
@@ -178,9 +197,11 @@ def main():
 	# root_bootstrap_tree_files('CDC/RAxML_output_known/bootstrap_trees','/home/saurav/research/tnet_vs_pscanner/CDC/tnet_input_known')
 	# create_cdc_phyloscanner_input('CDC/tnet_input_known','CDC/phyloscanner_input_known')
 	# run_phyloscanner_cdc('CDC/phyloscanner_input_known','CDC/phyloscanner_output_known')
-	run_tnet_cdc('CDC/tnet_input_known','CDC/tnet_output_known',50)
+	# run_tnet_cdc('CDC/tnet_input_known','CDC/tnet_output_known',50)
 	# rename_tnet_trees('CDC/tnet_input', 'CDC/tnet_input_renamed')
 
+
+	print(get_true_transmission_edges())
 
 	
 
