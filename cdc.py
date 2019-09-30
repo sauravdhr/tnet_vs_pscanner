@@ -2,7 +2,7 @@ from Bio import SeqIO
 import operator
 import shutil, os
 
-def get_true_transmission_edges():
+def get_cdc_true_transmission_edges():
 	sources = ['AA45','AC124','AI004','AJ199','AQ89','AW2','BA3','BB45','BC46','BJ28']
 	files = next(os.walk('CDC/fasta_files'))[2]
 	files.sort()
@@ -201,7 +201,7 @@ def main():
 	# rename_tnet_trees('CDC/tnet_input', 'CDC/tnet_input_renamed')
 
 
-	print(get_true_transmission_edges())
+	print(get_cdc_true_transmission_edges())
 
 	
 
