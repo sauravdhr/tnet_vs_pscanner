@@ -53,8 +53,8 @@ def create_cdc_fasta_file():
 
 
 def create_raxml_output(input_file, output_folder, bootstrap):
-	input_file = '/home/saurav/research/tnet_vs_pscanner/' + input_file
-	output_folder = '/home/saurav/research/tnet_vs_pscanner/' + output_folder
+	input_file = os.path.abspath(input_file)
+	output_folder = os.path.abspath(output_folder)
 	cmd = 'raxmlHPC -f a -m GTRGAMMA -p 12345 -x 12345 -s {} -w {} -N {} -n cdc -k'.format(input_file, output_folder, bootstrap)
 	print(cmd)
 	# os.system(cmd)
@@ -85,16 +85,17 @@ def create_bootstrap_tree_files(bootstrap_trees_file, output_folder):
 
 def root_bootstrap_tree_files(input_folder, output_folder):
 	tree_list = next(os.walk(input_folder))[2]
+	output_folder = os.path.abspath(output_folder)
 
 	for i in range(len(tree_list)):
 		input_tree = input_folder + '/' + tree_list[i]
 		cmd = 'raxmlHPC -f I -m GTRGAMMA -t {} -n {} -w {}'.format(input_tree, i, output_folder)
 		print(cmd)
-		os.system(cmd)
+		# os.system(cmd)
 		try:
 			os.remove(output_folder + '/RAxML_info.' + str(i))
 		except:
-			print('cool')
+			print('RAxML_info does not exist')
 
 
 def run_phyloscanner_cdc(input_folder, output_folder):
@@ -194,14 +195,14 @@ def main():
 	# create_cdc_fasta_file()
 	# create_raxml_output('CDC/known_outbreaks.fasta', 'CDC/RAxML_output_known', 20)
 	# create_bootstrap_tree_files('CDC/RAxML_output_known/RAxML_bootstrap.cdc','CDC/RAxML_output_known/bootstrap_trees')
-	# root_bootstrap_tree_files('CDC/RAxML_output_known/bootstrap_trees','/home/saurav/research/tnet_vs_pscanner/CDC/tnet_input_known')
+	# root_bootstrap_tree_files('CDC/RAxML_output_known/bootstrap_trees','CDC/tnet_input_known')
 	# create_cdc_phyloscanner_input('CDC/tnet_input_known','CDC/phyloscanner_input_known')
 	# run_phyloscanner_cdc('CDC/phyloscanner_input_known','CDC/phyloscanner_output_known')
 	# run_tnet_cdc('CDC/tnet_input_known','CDC/tnet_output_known',50)
 	# rename_tnet_trees('CDC/tnet_input', 'CDC/tnet_input_renamed')
 
 
-	print(get_cdc_true_transmission_edges())
+	# print(get_cdc_true_transmission_edges())
 
 	
 
