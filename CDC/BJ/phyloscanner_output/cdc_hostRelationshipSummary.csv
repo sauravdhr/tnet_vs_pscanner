@@ -1,0 +1,8 @@
+host.1,host.2,ancestry,ancestry.tree.count,both.exist,fraction,any.relationship.tree.count
+BJ23,BJ25,complex,11,21,11/21,14
+BJ23,BJ25,none,3,21,3/21,14
+BJ23,BJ28,complex,21,21,21/21,21
+BJ25,BJ28,complex,21,21,21/21,21
+BJ25,BJ30,complex,4,21,4/21,14
+BJ25,BJ30,none,10,21,10/21,14
+BJ28,BJ30,complex,21,21,21/21,21

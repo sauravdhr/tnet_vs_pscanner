@@ -1,0 +1,8 @@
+host.1,host.2,ancestry,ancestry.tree.count,both.exist,fraction,any.relationship.tree.count
+AC121,AC124,complex,13,21,13/21,20
+AC121,AC124,none,1,21,1/21,20
+AC122,AC124,complex,9,21,9/21,19
+AC123,AC124,complex,1,21,1/21,21
+AC124,AC121,trans,6,21,6/21,20
+AC124,AC122,trans,10,21,10/21,19
+AC124,AC123,trans,20,21,20/21,21

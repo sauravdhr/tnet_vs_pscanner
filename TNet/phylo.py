@@ -466,7 +466,7 @@ class TransmissionNetwork(PhyloNode):
         self.empty = False
         self.apply_function(_finish_tnet)
         f.close()
-    
+
     def read_beastlier_net(self, beastlier_net):
         try:
             f = open(beastlier_net, 'r')
@@ -526,7 +526,7 @@ class TransmissionNetwork(PhyloNode):
                     parent_name = node.get_parent().name
                 buff.append('{}\t{}\t{}\n'.format(parent_name, node.name, float(0)))
         return ''.join(buff)
-    
+
     def write_newick(self, stream=sys.stdout):
         string = super().write_newick()
         try:
