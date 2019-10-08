@@ -1,4 +1,4 @@
 host.1,host.2,ancestry,ancestry.tree.count,both.exist,fraction,any.relationship.tree.count
-AA20,AA45,complex,16,21,16/21,21
-AA45,AA20,trans,5,21,5/21,21
-AA45,AA8,complex,21,21,21/21,21
+20,45,complex,20,26,20/26,26
+45,20,trans,6,26,6/26,26
+45,8,complex,26,26,26/26,26

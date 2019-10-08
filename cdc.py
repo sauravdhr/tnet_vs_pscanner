@@ -11,9 +11,9 @@ import compare
 
 # Global Variables
 known_outbreaks = ['AA', 'AC', 'AI', 'AJ', 'AQ', 'AW', 'BA', 'BB', 'BC', 'BJ']
+sources = ['AA45','AC124','AI004','AJ199','AQ89','AW2','BA3','BB45','BC46','BJ28']
 
 def get_cdc_true_transmission_edges():
-	sources = ['AA45','AC124','AI004','AJ199','AQ89','AW2','BA3','BB45','BC46','BJ28']
 	files = next(os.walk('CDC/fasta_files'))[2]
 	files.sort()
 
@@ -30,44 +30,73 @@ def get_cdc_true_transmission_edges():
 
 
 def create_cdc_fasta_file():
-	temp = []
 	files = next(os.walk('CDC/all_fasta_files'))[2]
 	files.sort()
-	# print(len(files))
 
-	records = []
-
-	for file in files:
-		if file[:2] in known_outbreaks:
-			records.extend(list(SeqIO.parse('CDC/all_fasta_files/'+ file, 'fasta')))
-
-	for i in range(len(records)):
-	    # print(records[i].id)
-	    parts = records[i].id.rstrip().split('_')
-	    # print(parts[0] + '_N' + str(i))
-	    records[i].id = parts[0] + '_N' + str(i)
-	    records[i].name = ''
-	    records[i].description = ''
-
-	# print(len(records))
+	records = {}
 
 	for outbreak in known_outbreaks:
 		temp = []
-		for record in records:
-			if record.id.startswith(outbreak):
-				temp.append(record)
-		# print(len(temp))
+		for file in files:
+			if file.startswith(outbreak):
+				temp.extend(list(SeqIO.parse('CDC/all_fasta_files/'+ file, 'fasta')))
+
+		records[outbreak] = temp
+
+	for outbreak, record_list in records.items():
+		for i in range(len(record_list)):
+			parts = record_list[i].id.split('_')
+			host = int(parts[0][2:])
+			record_list[i].id = str(host) + '_N' + str(i)
+
 		os.mkdir("CDC/" + outbreak)
-		SeqIO.write(temp, "CDC/" + outbreak + "/sequences.fasta", "fasta")
+		SeqIO.write(record_list, "CDC/" + outbreak + "/sequences.fasta", "fasta")
+
+
+
+
+
+
+
+	# for file in files:
+	# 	if file[:2] in known_outbreaks:
+	# 		records.extend(list(SeqIO.parse('CDC/all_fasta_files/'+ file, 'fasta')))
+
+	# for i in range(len(records)):
+	#     # print(records[i].id)
+	#     parts = records[i].id.rstrip().split('_')
+	#     # print(parts[0] + '_N' + str(i))
+	#     records[i].id = parts[0] + '_N' + str(i)
+	#     records[i].name = ''
+	#     records[i].description = ''
+
+	# # print(len(records))
+
+	# for outbreak in known_outbreaks:
+	# 	temp = []
+	# 	for record in records:
+	# 		if record.id.startswith(outbreak):
+	# 			temp.append(record)
+	# 	# print(len(temp))
+	# 	os.mkdir("CDC/" + outbreak)
+	# 	SeqIO.write(temp, "CDC/" + outbreak + "/sequences.fasta", "fasta")
+
+
 
 def create_raxml_output(bootstrap):
 	for outbreak in known_outbreaks:
 		input_file = os.path.abspath('CDC/'+ outbreak +'/sequences.fasta')
 		output_folder = os.path.abspath('CDC/'+ outbreak +'/RAxML_output')
+		if not os.path.exists(output_folder):
+			os.mkdir(output_folder)
 
 		cmd = 'raxmlHPC -f a -m GTRGAMMA -p 12345 -x 12345 -s {} -w {} -N {} -n cdc -k'.format(input_file, output_folder, bootstrap)
-		print(cmd)
-		# os.system(cmd)
+		# print(cmd)
+		os.system(cmd)
+		try:
+			os.remove(output_folder + '/RAxML_info.cdc')
+		except:
+			print('RAxML_info does not exist')
 
 def create_cdc_phyloscanner_input():
 	for outbreak in known_outbreaks:
@@ -101,17 +130,18 @@ def create_bootstrap_tree_files():
 
 def root_bootstrap_tree_files():
 	for outbreak in known_outbreaks:
-		input_folder = 'CDC/'+outbreak+'/RAxML_output/bootstrap_trees'
-		output_folder = 'CDC/'+outbreak+'/tnet_input'
+		input_folder = 'CDC/'+ outbreak +'/RAxML_output/bootstrap_trees'
+		output_folder = 'CDC/'+ outbreak +'/tnet_input'
 		bootstrap_trees = next(os.walk(input_folder))[2]
 		output_folder = os.path.abspath(output_folder)
 		if not os.path.exists(output_folder):
 			os.mkdir(output_folder)
 
-		for i in range(len(bootstrap_trees)):
-			input_tree = input_folder + '/' + bootstrap_trees[i]
-			cmd = 'raxmlHPC -f I -m GTRGAMMA -t {} -n {} -w {}'.format(input_tree, i, output_folder)
-			print(cmd)
+		for tree in bootstrap_trees:
+			input_tree = input_folder + '/' + tree
+			i = int(tree.split('.')[2])
+			cmd = 'raxmlHPC -f I -m GTRGAMMA -t {} -n {} -w {}'.format(input_tree, str(i), output_folder)
+			# print(cmd)
 			os.system(cmd)
 			try:
 				os.remove(output_folder + '/RAxML_info.' + str(i))
@@ -243,14 +273,14 @@ def rename_tnet_trees(input_folder, output_folder):
 
 def main():
 	# create_cdc_fasta_file()
-	# create_raxml_output(20)
+	# create_raxml_output(25)
 	# create_bootstrap_tree_files()
 	# root_bootstrap_tree_files()
 	# create_cdc_phyloscanner_input()
-	# run_phyloscanner_cdc()
+	run_phyloscanner_cdc()
 	# run_tnet_cdc('CDC/tnet_input_renamed','CDC/tnet_output',50)
 	# rename_outbreak_tnet_trees()
-	run_tnet_cdc()
+	# run_tnet_cdc()
 
 
 	# print(get_cdc_true_transmission_edges())
