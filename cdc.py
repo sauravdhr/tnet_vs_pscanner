@@ -206,8 +206,9 @@ def run_tnet_multiple_times(input_file, output_file, time = 100):
 
 
 def run_tnet_cdc():
+	known_outbreaks = ['BA', 'BB', 'BC', 'BJ']
 	for outbreak in known_outbreaks:
-		input_folder = 'CDC/'+outbreak+'/tnet_input_renamed'
+		input_folder = 'CDC/'+outbreak+'/tnet_input'
 		output_folder = 'CDC/'+outbreak+'/tnet_output'
 		if not os.path.exists(output_folder):
 			os.mkdir(output_folder)
@@ -222,6 +223,37 @@ def run_tnet_cdc():
 			# break
 		
 		# break
+
+def create_cdc_tnet_symmary(th=50):
+	for outbreak in known_outbreaks:
+		input_folder = 'CDC/'+outbreak+'/tnet_output'
+		output_folder = 'CDC/'+outbreak
+		edge_dict = {}
+		result = open(output_folder+'/tnet.summary.50', 'w+')
+
+		tnet_list = next(os.walk(input_folder))[2]
+		for tnet in tnet_list:
+			input_file = input_folder+'/'+ tnet
+			f = open(input_file)
+			for line in f.readlines():
+				parts = line.rstrip().split('\t')
+				edge = parts[0]
+				# print(parts)
+				if int(parts[1]) < th: continue
+				if edge in edge_dict:
+					edge_dict[edge] += 1
+				else:
+					edge_dict[edge] = 1
+
+			f.close()
+
+		edge_dict = dict(sorted(edge_dict.items(), key=operator.itemgetter(1),reverse=True))
+
+		for x, y in edge_dict.items():
+			result.write('{}\t{}\n'.format(x, y))
+
+		result.close()
+
 
 def rename_outbreak_tnet_trees():
 	for outbreak in known_outbreaks:
@@ -277,10 +309,11 @@ def main():
 	# create_bootstrap_tree_files()
 	# root_bootstrap_tree_files()
 	# create_cdc_phyloscanner_input()
-	run_phyloscanner_cdc()
+	# run_phyloscanner_cdc()
 	# run_tnet_cdc('CDC/tnet_input_renamed','CDC/tnet_output',50)
 	# rename_outbreak_tnet_trees()
 	# run_tnet_cdc()
+	create_cdc_tnet_symmary()
 
 
 	# print(get_cdc_true_transmission_edges())
