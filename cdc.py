@@ -11,20 +11,25 @@ import compare
 
 # Global Variables
 known_outbreaks = ['AA', 'AC', 'AI', 'AJ', 'AQ', 'AW', 'BA', 'BB', 'BC', 'BJ']
-sources = ['AA45','AC124','AI004','AJ199','AQ89','AW2','BA3','BB45','BC46','BJ28']
+sources = ['AA45','AC124','AI4','AJ199','AQ89','AW2','BA3','BB45','BC46','BJ28']
 
-def get_cdc_true_transmission_edges():
-	files = next(os.walk('CDC/fasta_files'))[2]
-	files.sort()
+def get_true_transmission_edges(outbreak):
+	seq_list = list(SeqIO.parse('CDC/'+ outbreak +'/sequences.fasta', 'fasta'))
 
 	true_edges = []
+	hosts = []
+	for seq in seq_list:
+		hosts.append(seq.id.split('_')[0])
+
+	hosts = list(set(hosts))
+	# print(hosts)
 
 	for source in sources:
-		for file in files:
-			if source[:2] == file[:2]:
-				host = file.rstrip().split('_')[0]
-				if source != host:
-					true_edges.append(source +'->'+ host)
+		if source.startswith(outbreak):
+			s = source.replace(outbreak, '')
+			for host in hosts:
+				if s != host:
+					true_edges.append(s +'->'+ host)
 
 	return true_edges
 
@@ -177,7 +182,7 @@ def run_tnet_multiple_times(input_file, output_file, time = 100):
 
 		# Read result from temp_out_file and save to edge_dict
 		f = open(temp_out_file)
-		f.readline()
+		# f.readline()
 		for line in f.readlines():
 			parts = line.split('\t')
 			edge = parts[0]+'->'+parts[1]
@@ -205,31 +210,128 @@ def run_tnet_multiple_times(input_file, output_file, time = 100):
 	result.close()
 
 
+# Run tnet multiple times on single input_file tree and summery of all runs are listed in the output_file
+# by default it will run 100 times and directed and undirected counts are made
+def run_tnet_multiple_times_both_directed_undirected(input_file, output_file, undirected_output_file, time = 100):
+	temp_out_file = output_file + '.temp'
+	edge_dict = {}
+	undirected_edge_dict = {}
+
+	for t in range(time):
+		cmd = 'python3 TNet/tnet.py {} {}'.format(input_file, temp_out_file)
+		os.system(cmd)
+		e_list = []
+		un_e_list = []
+		print(t,'Done')
+
+		# Read result from temp_out_file and save to edge_dict
+		f = open(temp_out_file)
+		# f.readline()
+		for line in f.readlines():
+			parts = line.split('\t')
+			edge = parts[0]+'->'+parts[1]
+			rev_edge = parts[1]+'->'+parts[0]
+			# print(edge, rev_edge)
+
+			if edge not in e_list:
+				if edge in edge_dict:
+					edge_dict[edge] += 1
+				else:
+					edge_dict[edge] = 1
+				e_list.append(edge)
+
+			if edge not in un_e_list and rev_edge not in un_e_list:
+				# print(len(un_e_list), un_e_list)
+				if edge in undirected_edge_dict:
+					undirected_edge_dict[edge] += 1
+				elif rev_edge in undirected_edge_dict:
+					undirected_edge_dict[rev_edge] += 1
+				else:
+					undirected_edge_dict[edge] = 1
+				un_e_list.append(edge)
+
+		f.close()
+		os.remove(temp_out_file)
+		os.remove(input_file + '.temp')
+		os.remove(input_file + '.tnet.log')
+		# break
+
+	edge_dict = dict(sorted(edge_dict.items(), key=operator.itemgetter(1),reverse=True))
+	print(len(edge_dict), edge_dict)
+	undirected_edge_dict = dict(sorted(undirected_edge_dict.items(), key=operator.itemgetter(1),reverse=True))
+	print(len(undirected_edge_dict), undirected_edge_dict)
+
+	result = open(output_file, 'w+')
+	for x, y in edge_dict.items():
+		result.write('{}\t{}\n'.format(x, y))
+
+	result.close()
+
+	result = open(undirected_output_file, 'w+')
+	for x, y in undirected_edge_dict.items():
+		result.write('{}\t{}\n'.format(x, y))
+
+	result.close()
+
 def run_tnet_cdc():
-	known_outbreaks = ['BA', 'BB', 'BC', 'BJ']
+	# known_outbreaks = ['AW']
 	for outbreak in known_outbreaks:
 		input_folder = 'CDC/'+outbreak+'/tnet_input'
 		output_folder = 'CDC/'+outbreak+'/tnet_output'
+		undirected_output_folder = 'CDC/'+outbreak+'/tnet_output_undirected'
 		if not os.path.exists(output_folder):
 			os.mkdir(output_folder)
+		if not os.path.exists(undirected_output_folder):
+			os.mkdir(undirected_output_folder)
 		tree_list = next(os.walk(input_folder))[2]
-		# print(tree_list)
 
 		for tree in tree_list:
 			input_file = input_folder +'/'+ tree
 			output_file = output_folder +'/cdc_bootstrap.'+ tree.rstrip().split('.')[1]
-			print(input_file, output_file)
-			run_tnet_multiple_times(input_file, output_file)
+			undirected_output_file = undirected_output_folder +'/cdc_bootstrap.'+ tree.rstrip().split('.')[1]
+			if not os.path.exists(output_file):
+				# run_tnet_multiple_times(input_file, output_file)
+				run_tnet_multiple_times_both_directed_undirected(input_file, output_file, undirected_output_file)
 			# break
-		
 		# break
 
-def create_cdc_tnet_symmary(th=50):
+
+def create_cdc_tnet_summary(th=50):
 	for outbreak in known_outbreaks:
 		input_folder = 'CDC/'+outbreak+'/tnet_output'
 		output_folder = 'CDC/'+outbreak
 		edge_dict = {}
-		result = open(output_folder+'/tnet.summary.50', 'w+')
+		result = open(output_folder+'/tnet.summary.'+ str(th), 'w+')
+
+		tnet_list = next(os.walk(input_folder))[2]
+		for tnet in tnet_list:
+			input_file = input_folder+'/'+ tnet
+			f = open(input_file)
+			for line in f.readlines():
+				parts = line.rstrip().split('\t')
+				edge = parts[0]
+				# print(parts)
+				if int(parts[1]) < th: continue
+				if edge in edge_dict:
+					edge_dict[edge] += 1
+				else:
+					edge_dict[edge] = 1
+
+			f.close()
+
+		edge_dict = dict(sorted(edge_dict.items(), key=operator.itemgetter(1),reverse=True))
+
+		for x, y in edge_dict.items():
+			result.write('{}\t{}\n'.format(x, y))
+
+		result.close()
+
+def create_cdc_tnet_summary_undirected(th=50):
+	for outbreak in known_outbreaks:
+		input_folder = 'CDC/'+outbreak+'/tnet_output_undirected'
+		output_folder = 'CDC/'+outbreak
+		edge_dict = {}
+		result = open(output_folder+'/tnet.summary.undirected.'+ str(th), 'w+')
 
 		tnet_list = next(os.walk(input_folder))[2]
 		for tnet in tnet_list:
@@ -300,6 +402,163 @@ def rename_tnet_trees(input_folder, output_folder):
 		output_file.close()
 		# break
 
+def compare_cdc_directed():
+	TP_FP_FN_file = open('CDC/cdc.directed.50.th_50.TP_FP_FN.csv', 'w+')
+	TP_FP_FN_file.write('outbreak,phylo_tp,phylo_fp,phylo_fn,tnet_tp,tnet_fp,tnet_fn\n')
+	F1_file = open('CDC/cdc.directed.50.th_5.F1.csv', 'w+')
+	F1_file.write('outbreak,phylo_prec,phylo_rec,phylo_f1,tnet_prec,tnet_rec,tnet_f1\n')
+
+	for outbreak in known_outbreaks:
+		print('outbreak: ', outbreak)
+
+		TP_FP_FN = []
+		F1 = []
+
+		real = set(get_true_transmission_edges(outbreak))
+		phylo = set(gr.get_phyloscanner_multi_tree_edges_with_complex('CDC/'+ outbreak +'/phyloscanner_output/cdc_hostRelationshipSummary.csv', 13))
+		tnet = set(gr.get_summary_tnet_edges('CDC/'+ outbreak +'/tnet.summary.50', 13))
+		print(real)
+		print(phylo)
+		print(tnet)
+		
+
+		TP = len(real & phylo)
+		FP = len(phylo - real)
+		FN = len(real - phylo)
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
+
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		TP = len(real & tnet)
+		FP = len(tnet - real)
+		FN = len(real - tnet)
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
+
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		print(TP_FP_FN)
+		print(F1)
+		TP_FP_FN_file.write('{},{},{},{},{},{},{}\n'.format(outbreak,TP_FP_FN[0],TP_FP_FN[1],TP_FP_FN[2],
+							TP_FP_FN[3],TP_FP_FN[4],TP_FP_FN[5]))
+		F1_file.write('{},{},{},{},{},{},{}\n'.format(outbreak,F1[0],F1[1],F1[2],F1[3],F1[4],F1[5]))
+		# break
+
+
+def compare_cdc_undirected():
+	TP_FP_FN_file = open('CDC/undirected.cdc.50.th_50.TP_FP_FN.csv', 'w+')
+	TP_FP_FN_file.write('outbreak,phylo_tp,phylo_fp,phylo_fn,tnet_tp,tnet_fp,tnet_fn\n')
+	F1_file = open('CDC/undirected.cdc.50.th_50.F1.csv', 'w+')
+	F1_file.write('outbreak,phylo_prec,phylo_rec,phylo_f1,tnet_prec,tnet_rec,tnet_f1\n')
+
+	for outbreak in known_outbreaks:
+		print('outbreak: ', outbreak)
+
+		TP_FP_FN = []
+		F1 = []
+
+		real = set(get_true_transmission_edges(outbreak))
+		phylo = set(gr.get_phyloscanner_multi_tree_edges_with_complex('CDC/'+ outbreak +'/phyloscanner_output/cdc_hostRelationshipSummary.csv', 13))
+		tnet = set(get_undirected_tnet_summary('CDC/'+ outbreak +'/tnet.summary.undirected.50', 13))
+		print(real)
+		print(phylo)
+		print(tnet)
+		
+
+		TP = len(compare.intersection(real, phylo))
+		FP = len(compare.minus(phylo,real))
+		FN = len(compare.minus(real,phylo))
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
+
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		TP = len(compare.intersection(real, tnet))
+		FP = len(compare.minus(tnet,real))
+		FN = len(compare.minus(real,tnet))
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
+
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		print(TP_FP_FN)
+		print(F1)
+		TP_FP_FN_file.write('{},{},{},{},{},{},{}\n'.format(outbreak,TP_FP_FN[0],TP_FP_FN[1],TP_FP_FN[2],
+							TP_FP_FN[3],TP_FP_FN[4],TP_FP_FN[5]))
+		F1_file.write('{},{},{},{},{},{},{}\n'.format(outbreak,F1[0],F1[1],F1[2],F1[3],F1[4],F1[5]))
+		# break
+
+
+def get_undirected_tnet_summary(file, cutoff):
+	edges = []
+	edge_dict = {}
+	f = open(file)
+
+	for line in f.readlines():
+		if line.startswith('None'): continue
+		parts = line.rstrip().split('\t')
+		edge = parts[0]
+		e_parts = edge.split('->')
+		rev_edge = e_parts[1]+'->'+e_parts[0]
+
+		if edge in edge_dict:
+			edge_dict[edge] += int(parts[1])
+		elif rev_edge in edge_dict:
+			edge_dict[rev_edge] += int(parts[1])
+		else:
+			edge_dict[edge] = int(parts[1])
+
+	f.close()
+	for x, y in edge_dict.items():
+		print(x, y)
+		if y > cutoff: edges.append(x)
+
+	return edges
 
 
 
@@ -313,10 +572,13 @@ def main():
 	# run_tnet_cdc('CDC/tnet_input_renamed','CDC/tnet_output',50)
 	# rename_outbreak_tnet_trees()
 	# run_tnet_cdc()
-	create_cdc_tnet_symmary()
+	# create_cdc_tnet_summary()
+	# create_cdc_tnet_summary_undirected()
 
 
-	# print(get_cdc_true_transmission_edges())
+
+	# compare_cdc_directed()
+	compare_cdc_undirected()
 	# phylo_multi_with_complex = set(gr.get_phyloscanner_multi_tree_edges_with_complex('CDC/phyloscanner_output_known/CDC_hostRelationshipSummary.csv', 11))
 	# real = set(get_cdc_true_transmission_edges())
 
