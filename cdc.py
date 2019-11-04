@@ -58,11 +58,6 @@ def create_cdc_fasta_file():
 		SeqIO.write(record_list, "CDC/" + outbreak + "/sequences.fasta", "fasta")
 
 
-
-
-
-
-
 	# for file in files:
 	# 	if file[:2] in known_outbreaks:
 	# 		records.extend(list(SeqIO.parse('CDC/all_fasta_files/'+ file, 'fasta')))
@@ -402,10 +397,10 @@ def rename_tnet_trees(input_folder, output_folder):
 		output_file.close()
 		# break
 
-def compare_cdc_directed():
-	TP_FP_FN_file = open('CDC/cdc.directed.50.th_50.TP_FP_FN.csv', 'w+')
+def compare_cdc_directed(th=50):
+	TP_FP_FN_file = open('CDC/cdc.directed.80.th_' +str(th)+ '.TP_FP_FN.csv', 'w+')
 	TP_FP_FN_file.write('outbreak,phylo_tp,phylo_fp,phylo_fn,tnet_tp,tnet_fp,tnet_fn\n')
-	F1_file = open('CDC/cdc.directed.50.th_5.F1.csv', 'w+')
+	F1_file = open('CDC/cdc.directed.80.th_' +str(th)+ '.F1.csv', 'w+')
 	F1_file.write('outbreak,phylo_prec,phylo_rec,phylo_f1,tnet_prec,tnet_rec,tnet_f1\n')
 
 	for outbreak in known_outbreaks:
@@ -415,8 +410,8 @@ def compare_cdc_directed():
 		F1 = []
 
 		real = set(get_true_transmission_edges(outbreak))
-		phylo = set(gr.get_phyloscanner_multi_tree_edges_with_complex('CDC/'+ outbreak +'/phyloscanner_output/cdc_hostRelationshipSummary.csv', 13))
-		tnet = set(gr.get_summary_tnet_edges('CDC/'+ outbreak +'/tnet.summary.50', 13))
+		phylo = set(gr.get_phyloscanner_multi_tree_edges_with_complex('CDC/'+ outbreak +'/phyloscanner_output/cdc_hostRelationshipSummary.csv', 21))
+		tnet = set(gr.get_summary_tnet_edges('CDC/'+ outbreak +'/tnet.summary.80', 21))
 		print(real)
 		print(phylo)
 		print(tnet)
@@ -468,10 +463,10 @@ def compare_cdc_directed():
 		# break
 
 
-def compare_cdc_undirected():
-	TP_FP_FN_file = open('CDC/undirected.cdc.50.th_50.TP_FP_FN.csv', 'w+')
+def compare_cdc_undirected(th=50):
+	TP_FP_FN_file = open('CDC/undirected.cdc.80.th_'+ str(th) +'.TP_FP_FN.csv', 'w+')
 	TP_FP_FN_file.write('outbreak,phylo_tp,phylo_fp,phylo_fn,tnet_tp,tnet_fp,tnet_fn\n')
-	F1_file = open('CDC/undirected.cdc.50.th_50.F1.csv', 'w+')
+	F1_file = open('CDC/undirected.cdc.80.th_'+ str(th) +'.F1.csv', 'w+')
 	F1_file.write('outbreak,phylo_prec,phylo_rec,phylo_f1,tnet_prec,tnet_rec,tnet_f1\n')
 
 	for outbreak in known_outbreaks:
@@ -482,7 +477,7 @@ def compare_cdc_undirected():
 
 		real = set(get_true_transmission_edges(outbreak))
 		phylo = set(gr.get_phyloscanner_multi_tree_edges_with_complex('CDC/'+ outbreak +'/phyloscanner_output/cdc_hostRelationshipSummary.csv', 13))
-		tnet = set(get_undirected_tnet_summary('CDC/'+ outbreak +'/tnet.summary.undirected.50', 13))
+		tnet = set(get_undirected_tnet_summary('CDC/'+ outbreak +'/tnet.summary.undirected.80', 13))
 		print(real)
 		print(phylo)
 		print(tnet)
@@ -572,13 +567,13 @@ def main():
 	# run_tnet_cdc('CDC/tnet_input_renamed','CDC/tnet_output',50)
 	# rename_outbreak_tnet_trees()
 	# run_tnet_cdc()
-	# create_cdc_tnet_summary()
-	# create_cdc_tnet_summary_undirected()
+	# create_cdc_tnet_summary(80)
+	# create_cdc_tnet_summary_undirected(80)
 
 
 
-	# compare_cdc_directed()
-	compare_cdc_undirected()
+	# compare_cdc_directed(80)
+	compare_cdc_undirected(50)
 	# phylo_multi_with_complex = set(gr.get_phyloscanner_multi_tree_edges_with_complex('CDC/phyloscanner_output_known/CDC_hostRelationshipSummary.csv', 11))
 	# real = set(get_cdc_true_transmission_edges())
 

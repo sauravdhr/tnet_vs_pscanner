@@ -39,9 +39,9 @@ def generate_seqgen_tnet_multiple(folder):
 	result.close()
 
 
-def create_seqgen_tnet_symmary(folder, th = 80):
+def create_seqgen_tnet_symmary(folder, th = 50):
 	edge_dict = {}
-	result = open('outputs/'+folder+'/seqgen.tnet.summary.50', 'w+')
+	result = open('outputs/'+folder+'/seqgen.tnet.summary.' + str(th), 'w+')
 
 	for i in range(10):
 		# Reading .multiple file
@@ -67,9 +67,9 @@ def create_seqgen_tnet_symmary(folder, th = 80):
 
 	result.close()
 
-def create_undirected_seqgen_tnet_symmary(folder, th = 80):
+def create_undirected_seqgen_tnet_symmary(folder, th = 50):
 	edge_dict = {}
-	result = open('outputs/'+folder+'/undirected.seqgen.tnet.summary.50', 'w+')
+	result = open('outputs/'+folder+'/undirected.seqgen.tnet.summary.' + str(th), 'w+')
 
 	for i in range(10):
 		# Reading .multiple file
@@ -108,7 +108,7 @@ def create_undirected_seqgen_tnet_symmary(folder, th = 80):
 				edge_dict[edge] = 1
 
 	edge_dict = dict(sorted(edge_dict.items(), key=operator.itemgetter(1),reverse=True))
-	print(edge_dict)
+	# print(edge_dict)
 	for x, y in edge_dict.items():
 		result.write('{}\t{}\n'.format(x, y))
 
@@ -391,10 +391,94 @@ def minus(a,b):
 
 	return minus
 
-def main():
+def seqgen_compare_directed(th = 50):
 	cur_dir = 'seqgen/'
 	folders = next(os.walk(cur_dir))[1]
 	folders.sort()
+
+	TP_FP_FN_file = open('directed.seqgen.tnet.80.th_'+ str(th) +'.TP_FP_FN.csv', 'w+')
+	TP_FP_FN_file.write('dataset,phylo_tp,phylo_fp,phylo_fn,phylo_complex_tp,phylo_complex_fp,phylo_complex_fn,tnet_tp,tnet_fp,tnet_fn\n')
+	F1_file = open('directed.seqgen.tnet.80.th_'+ str(th) +'.F1.csv', 'w+')
+	F1_file.write('dataset,phylo_prec,phylo_rec,phylo_f1,phylo_complex_prec,phylo_complex_rec,phylo_complex_f1,tnet_prec,tnet_rec,tnet_f1\n')
+
+	for folder in folders:
+		print('inside folder: ',folder)
+
+		TP_FP_FN = []
+		F1 = []
+
+		real = set(gr.get_real_edges('outputs/'+folder+'/real_network.txt'))
+		phylo = set(gr.get_phyloscanner_multi_tree_edges('outputs/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
+		phylo_with_complex = set(gr.get_phyloscanner_multi_tree_edges_with_complex('outputs/'+folder+'/phyloscanner_multi_tree/seqgen_hostRelationshipSummary.csv', 5))
+		tnet = set(gr.get_summary_tnet_edges('outputs/'+folder+'/seqgen.tnet.summary.80', 5))
+
+		TP = len(real & phylo)
+		FP = len(phylo - real)
+		FN = len(real - phylo)
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
+
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		TP = len(real & phylo_with_complex)
+		FP = len(phylo_with_complex - real)
+		FN = len(real - phylo_with_complex)
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
+
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		TP = len(real & tnet)
+		FP = len(tnet - real)
+		FN = len(real - tnet)
+		try:
+			precision = TP/(TP+FP)
+			recall = TP/(TP+FN)
+			f1 = 2*(recall * precision) / (recall + precision)
+		except ZeroDivisionError:
+			precision = 0
+			recall = 0
+			f1 = 0
+
+		TP_FP_FN.append(TP)
+		TP_FP_FN.append(FP)
+		TP_FP_FN.append(FN)
+		F1.append(round(precision,3))
+		F1.append(round(recall,3))
+		F1.append(round(f1,3))
+
+		TP_FP_FN_file.write('{},{},{},{},{},{},{},{},{},{}\n'.format(folder,TP_FP_FN[0],TP_FP_FN[1],TP_FP_FN[2],
+							TP_FP_FN[3],TP_FP_FN[4],TP_FP_FN[5],TP_FP_FN[6],TP_FP_FN[7],TP_FP_FN[8]))
+		F1_file.write('{},{},{},{},{},{},{},{},{},{}\n'.format(folder,F1[0],F1[1],F1[2],F1[3],F1[4],F1[5],F1[6],
+							F1[7],F1[8]))
+
+def main():
+	seqgen_compare_directed(50)
+	# cur_dir = 'seqgen/'
+	# folders = next(os.walk(cur_dir))[1]
+	# folders.sort()
 	# match = 'mr025'
 	# match2 = 'mr0125'
 	# new_folders = []
@@ -406,7 +490,7 @@ def main():
 	# print(new_folders)
 	# print(len(new_folders))
 	# compare_tnet(new_folders)
-	compare_directed(folders)
+	# compare_directed(folders)
 
 	# TP_FP_FN_file = open('tnet.different.TP_FP_FN.csv', 'w+')
 	# TP_FP_FN_file.write('dataset,tnet_50_tp,tnet_50_fp,tnet_50_fn,tnet_80_tp,tnet_80_fp,tnet_80_fn,tnet_100_tp,tnet_100_fp,tnet_100_fn\n')
@@ -415,8 +499,8 @@ def main():
 
 	# for folder in folders:
 	# 	print('inside folder: ',folder)
-	# 	create_seqgen_tnet_symmary(folder, 50)
-	# 	create_undirected_seqgen_tnet_symmary(folder, 50)
+	# 	create_seqgen_tnet_symmary(folder, 80)
+	# 	create_undirected_seqgen_tnet_symmary(folder, 80)
 	# 	# break
 
 	# generate_seqgen_tnet_multiple('SEIR01_sl1000_mr025_nv20_20')
