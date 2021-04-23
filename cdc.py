@@ -22,8 +22,6 @@ def get_true_transmission_edges(outbreak):
 		hosts.append(seq.id.split('_')[0])
 
 	hosts = list(set(hosts))
-	# print(hosts)
-
 	for source in sources:
 		if source.startswith(outbreak):
 			s = source.replace(outbreak, '')
